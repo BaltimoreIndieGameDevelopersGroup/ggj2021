@@ -28,7 +28,7 @@
                 {
                     if (voxel.Surface == Surface.Dirt)
                     {
-                        Destroy(hitInfo.collider.gameObject);
+                        voxel.Disintegrate();
                     }
                 }
             }
