@@ -1,5 +1,8 @@
 ﻿namespace Game
 {
+    /// <summary>
+    /// Interface for the player controller.
+    /// </summary>
     public interface IPlayerController
     {
 
