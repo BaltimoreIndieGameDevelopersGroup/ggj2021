@@ -10,7 +10,7 @@
     /// Examples:
     /// 
     /// Register:
-    ///   PlayerController::Start: ServiceLocator.Register<IPlayerController>(this);
+    ///   PlayerController Start() { ServiceLocator.Register<IPlayerController>(this); }
     /// 
     /// Get the player controller:
     ///   var playerController = ServiceLocator.Get<IPlayerController>();

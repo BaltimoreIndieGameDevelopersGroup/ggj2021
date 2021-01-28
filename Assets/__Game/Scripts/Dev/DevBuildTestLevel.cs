@@ -23,7 +23,9 @@
                     var prefab = isEdge ? steelPrefab : dirtPrefab;
                     Instantiate(prefab, new Vector3(x, -0.5f, z), Quaternion.identity);
                     Instantiate(prefab, new Vector3(x, -1.5f, z), Quaternion.identity);
-                    Instantiate(steelPrefab, new Vector3(x, -2.5f, z), Quaternion.identity);
+                    Instantiate(prefab, new Vector3(x, -2.5f, z), Quaternion.identity);
+                    Instantiate(prefab, new Vector3(x, -3.5f, z), Quaternion.identity);
+                    Instantiate(steelPrefab, new Vector3(x, -4.5f, z), Quaternion.identity);
                     if (isEdge)
                     {
                         for (int i = 0; i < wallHeight; i++)
