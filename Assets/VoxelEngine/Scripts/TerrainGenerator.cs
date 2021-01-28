@@ -6,18 +6,18 @@ using UnityEngine;
 
 public class TerrainGenerator : Singleton<TerrainGenerator>
 {
-    [SerializeField] Transform target;
-    [SerializeField] Vector3Int chunkSize = Vector3Int.one * 32;
-    [SerializeField] Vector2Int chunkSpawnSize = Vector2Int.one * 3;
-    [SerializeField] Material chunkMaterial;
-    [SerializeField] int maxGenerateChunksInFrame = 5;
-    [SerializeField] VoxelMeshBuilder.SimplifyingMethod simplifyingMethod;
+    public Transform target;
+    public Vector3Int chunkSize = Vector3Int.one * 32;
+    public Vector2Int chunkSpawnSize = Vector2Int.one * 3;
+    public Material chunkMaterial;
+    public int maxGenerateChunksInFrame = 5;
+    public VoxelMeshBuilder.SimplifyingMethod simplifyingMethod;
 
     class ChunkNode : FastPriorityQueueNode
     {
         public Vector3Int chunkPosition;
-    } 
-    
+    }
+
     Dictionary<Vector3Int, Chunk> chunks = new Dictionary<Vector3Int, Chunk>();
     Vector3Int lastTargetChunkPosition = new Vector3Int(int.MinValue, int.MaxValue, int.MinValue);
     //Queue<ChunkNode> generateChunkQueue = new Queue<ChunkNode>();
@@ -38,6 +38,18 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
 
     void Awake()
     {
+        try
+        {
+            var terrainSetting = GetComponent<TerrainToolSet>().GetTerrainSetting();
+            chunkSize = terrainSetting.chunkSize;
+            chunkSpawnSize = terrainSetting.chunkSpawnSize;
+        }
+        catch (System.Exception err)
+        {
+
+            Debug.Log("Using defaults  for terrain gen ");
+        }
+
         VoxelMeshBuilder.InitializeShaderParameter();
     }
 
@@ -55,7 +67,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
     {
         if (target == null)
             return;
-        
+
         Vector3Int targetPosition = VoxelUtil.WorldToChunk(target.position, chunkSize);
 
         if (lastTargetChunkPosition == targetPosition)
@@ -69,7 +81,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
                 generateChunkQueue.Remove(chunkNode);
                 continue;
             }
-            
+
             generateChunkQueue.UpdatePriority(chunkNode, (targetPosition - chunkNode.chunkPosition).sqrMagnitude);
         }
 
@@ -81,7 +93,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
                 if (chunks.ContainsKey(chunkPosition))
                     continue;
 
-                ChunkNode newNode = new ChunkNode {chunkPosition = chunkPosition};
+                ChunkNode newNode = new ChunkNode { chunkPosition = chunkPosition };
 
                 if (generateChunkQueue.Contains(newNode))
                     continue;
@@ -157,10 +169,10 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
         {
             Vector3Int chunkPosition = VoxelUtil.WorldToChunk(worldPosition, chunkSize);
             Vector3Int gridPosition = VoxelUtil.WorldToGrid(worldPosition, chunkPosition, chunkSize);
-            if(chunk.GetVoxel(gridPosition, out voxel))
+            if (chunk.GetVoxel(gridPosition, out voxel))
                 return true;
         }
-        
+
         voxel = Voxel.Empty;
         return false;
     }
@@ -196,7 +208,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
                             Vector3Int neighborChunkPosition = VoxelUtil.WorldToChunk(worldPosition + new Vector3(x, y, z), chunkSize);
                             if (chunkPosition == neighborChunkPosition)
                                 continue;
-                            
+
                             if (chunks.TryGetValue(neighborChunkPosition, out Chunk neighborChunk))
                             {
                                 neighborChunk.NeighborChunkIsChanged();
@@ -214,7 +226,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
     public List<Voxel[]> GetNeighborVoxels(Vector3Int chunkPosition, int numNeighbor)
     {
         List<Voxel[]> neighborVoxels = new List<Voxel[]>();
-        
+
         for (int x = chunkPosition.x - numNeighbor; x <= chunkPosition.x + numNeighbor; x++)
         {
             for (int y = chunkPosition.y - numNeighbor; y <= chunkPosition.y + numNeighbor; y++)
@@ -236,5 +248,5 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
 
         return neighborVoxels;
     }
-    
+
 }

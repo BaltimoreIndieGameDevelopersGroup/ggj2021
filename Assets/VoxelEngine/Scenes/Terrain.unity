@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1767121428}
   chunkSize: {x: 16, y: 128, z: 16}
-  chunkSpawnSize: {x: 12, y: 12}
+  chunkSpawnSize: {x: 500, y: 1}
   chunkMaterial: {fileID: 2100000, guid: 0fbb6114864c2014b87fc493434a98af, type: 2}
   maxGenerateChunksInFrame: 3
   simplifyingMethod: 2
