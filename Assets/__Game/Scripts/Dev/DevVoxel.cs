@@ -14,7 +14,14 @@
 
         public void Disintegrate()
         {
-            Destroy(gameObject);
+            GetComponent<Renderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
+            var particles = GetComponentInChildren<ParticleSystem>();
+            if (particles != null)
+            {
+                particles.Play();
+            }
+            Destroy(gameObject, 1);
         }
     }
 }
