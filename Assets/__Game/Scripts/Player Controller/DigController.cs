@@ -6,7 +6,7 @@
     {
         private bool digging = false;
 
-        private float raycastDistance = 2;
+        private float raycastDistance = 1.5f;
 
         private void Update()
         {
