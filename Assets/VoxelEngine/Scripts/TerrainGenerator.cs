@@ -121,6 +121,8 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
             GenerateChunk(chunkPosition);
             numChunks++;
         }
+
+        terrainToolSet.postGenCallback();
     }
 
     Chunk GenerateChunk(Vector3Int chunkPosition)
