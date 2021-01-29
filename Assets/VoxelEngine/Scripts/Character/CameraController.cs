@@ -23,8 +23,11 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        input = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        input *= sensitivity;
+        var mouseInput = sensitivity * new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        var rightStickInput = sensitivity * new Vector2(Input.GetAxisRaw("Right Stick X"), Input.GetAxisRaw("Right Stick Y"));
+        //input = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        //input *= sensitivity;
+        input = mouseInput + rightStickInput;
         
         mouseLook += input;
         mouseLook.y = Mathf.Clamp(mouseLook.y, -90f, 90f);    
