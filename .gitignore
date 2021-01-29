@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 fmod_editor.log
 packages-lock.json
+fmod_editor.log
+Packages/packages-lock.json
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
