@@ -48,7 +48,7 @@
             {
                 TryDig();
             }
-            else if (Input.GetButtonDown("Fire3"))
+            else if (Input.GetButtonDown("Light Dynamite"))
             {
                 TryDynamite();
             }

@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee24df083117aa24fba16840bc90b02b, type: 3}
   m_Name: Dynamite
   m_EditorClassIdentifier: 
-  pickupMessage: 'Dynamite: Blast through dirt and stone'
+  pickupMessage: 'Dynamite: Blast through dirt and stone.
+
+    RMB or gamepad B to
+    light.'
