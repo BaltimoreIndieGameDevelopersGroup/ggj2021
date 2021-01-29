@@ -10,6 +10,7 @@ public class TerrainToolSet : MonoBehaviour
 {
 
     public List<TerrainSetting> terrainSettings;
+    public List<Vector3Int> chunkPos;
     public SizeSetting currentSize;
 
 
@@ -28,7 +29,8 @@ public class TerrainToolSet : MonoBehaviour
 
     }
 
-
-
-
+    internal void addChunkPos(Vector3Int chunkPosition)
+    {
+        chunkPos.Add(chunkPosition);
+    }
 }

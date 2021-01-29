@@ -245,7 +245,7 @@ PrefabInstance:
     - target: {fileID: 8275689062710629191, guid: 6f3fd7e17d1f0644cb5e140170326d66,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8275689062710629191, guid: 6f3fd7e17d1f0644cb5e140170326d66,
         type: 3}
@@ -255,7 +255,7 @@ PrefabInstance:
     - target: {fileID: 8275689062710629191, guid: 6f3fd7e17d1f0644cb5e140170326d66,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8275689062710629191, guid: 6f3fd7e17d1f0644cb5e140170326d66,
         type: 3}
@@ -499,12 +499,13 @@ MonoBehaviour:
     chunkSize: {x: 256, y: 128, z: 64}
     chunkSpawnSize: {x: 1, y: 1}
   - Size: 2
-    chunkSize: {x: 256, y: 128, z: 64}
+    chunkSize: {x: 512, y: 128, z: 64}
     chunkSpawnSize: {x: 1, y: 1}
   - Size: 0
     chunkSize: {x: 16, y: 128, z: 32}
     chunkSpawnSize: {x: 1, y: 1}
-  currentSize: 2
+  chunkPos: []
+  currentSize: 0
 --- !u!4 &2036995200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8275689062710629191, guid: 6f3fd7e17d1f0644cb5e140170326d66,

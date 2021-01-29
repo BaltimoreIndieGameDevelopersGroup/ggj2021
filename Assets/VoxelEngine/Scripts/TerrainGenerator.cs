@@ -120,6 +120,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
                 return;
 
             Vector3Int chunkPosition = generateChunkQueue.Dequeue().chunkPosition;
+
             GenerateChunk(chunkPosition);
             numChunks++;
         }
