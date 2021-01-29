@@ -9,7 +9,7 @@
         public void PickUp()
         {
             ServiceLocator.Get<IInventory>().AddItem(item);
-            ServiceLocator.Get<IMessageUI>().ShowMessage(item.name);
+            ServiceLocator.Get<IMessageUI>().ShowMessage(item.PickupMessage);
             Destroy(gameObject);
         }
 

@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee24df083117aa24fba16840bc90b02b, type: 3}
-  m_Name: Secret Plans
+  m_Name: Shovel
   m_EditorClassIdentifier: 
-  pickupMessage: Secret plans acquired. Now escape!
+  pickupMessage: 'Shovel: dig faster through dirt'
