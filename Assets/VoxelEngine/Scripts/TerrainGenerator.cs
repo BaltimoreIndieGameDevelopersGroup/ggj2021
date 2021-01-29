@@ -24,7 +24,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
     Vector3Int lastTargetChunkPosition = new Vector3Int(int.MinValue, int.MaxValue, int.MinValue);
     //Queue<ChunkNode> generateChunkQueue = new Queue<ChunkNode>();
     FastPriorityQueue<ChunkNode> generateChunkQueue = new FastPriorityQueue<ChunkNode>(100000);
-    int updatingChunks;
+    public int updatingChunks;
 
     public Vector3Int ChunkSize => chunkSize;
     public Material ChunkMaterial => chunkMaterial;
@@ -55,6 +55,8 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
         }
 
         VoxelMeshBuilder.InitializeShaderParameter();
+        GenerateChunkByTargetPosition();
+        ProcessGenerateChunkQueue();
     }
 
     void Update()
@@ -122,7 +124,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
             numChunks++;
         }
 
-        terrainToolSet.postGenCallback();
+        // terrainToolSet.postGenCallback();
     }
 
     Chunk GenerateChunk(Vector3Int chunkPosition)

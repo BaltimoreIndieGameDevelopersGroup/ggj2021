@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
+using System.Threading.Tasks;
+
 
 public class TerrainToolSet : MonoBehaviour
 {
@@ -11,16 +12,9 @@ public class TerrainToolSet : MonoBehaviour
     public List<TerrainSetting> terrainSettings;
     public SizeSetting currentSize;
 
-    public CharacterController characterController;
-
-    public void Awake()
-    {
-
-        characterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
-        characterController.enabled = false;
 
 
-    }
+
     public TerrainSetting GetTerrainSetting()
     {
 
@@ -34,9 +28,7 @@ public class TerrainToolSet : MonoBehaviour
 
     }
 
-    internal void postGenCallback()
-    {
-        characterController.enabled = true;
 
-    }
+
+
 }
