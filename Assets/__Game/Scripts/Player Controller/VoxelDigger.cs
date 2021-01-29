@@ -113,7 +113,7 @@
 
             isDigging = true;
 
-            //digSoundEmitter.Play();
+            //[TODO] digSoundEmitter.Play();
 
             if (dirtParticles != null)
             {

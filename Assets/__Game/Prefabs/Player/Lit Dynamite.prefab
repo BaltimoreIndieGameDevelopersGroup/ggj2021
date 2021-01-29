@@ -49,6 +49,8 @@ MonoBehaviour:
   fuseDuration: 3
   flame: {fileID: 2039427167760795625}
   flameLight: {fileID: 5147343522706384583}
+  explosionPrefab: {fileID: 9211812255604450673, guid: 73e29c4d7ca28b24c8bd4f5d3c406cbd,
+    type: 3}
 --- !u!1 &7301068663083432689
 GameObject:
   m_ObjectHideFlags: 0
