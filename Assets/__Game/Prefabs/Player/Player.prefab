@@ -290,6 +290,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45fbaec14ea8fe418b08e95c356d290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prioritizedDiggingTools:
+  - item: {fileID: 11400000, guid: dd3ed6dd501f53c43ba295fd115eadd3, type: 2}
+    penetratesRock: 1
+    digDuration: 0.1
+  - item: {fileID: 11400000, guid: cbbe2fea52fc97d4fb462f4584684e7f, type: 2}
+    penetratesRock: 0
+    digDuration: 0.25
+  - item: {fileID: 11400000, guid: 0b8bf428357bd9846a0ab0815628a4c3, type: 2}
+    penetratesRock: 0
+    digDuration: 0.5
+  - item: {fileID: 0}
+    penetratesRock: 0
+    digDuration: 1
+  dynamite: {fileID: 11400000, guid: f1cf32dbc174951448923299d6169858, type: 2}
+  litDynamite: {fileID: 5770308293025577733, guid: 0daedd7e22133c448b7ee3ac90b612fe,
+    type: 3}
   digSoundEmitter: {fileID: 0}
 --- !u!114 &1784117845861940986
 MonoBehaviour:

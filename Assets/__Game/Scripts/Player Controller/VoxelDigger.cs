@@ -1,15 +1,38 @@
 ﻿namespace Game
 {
+    using System;
     using System.Collections;
     using UnityEngine;
     using OptIn.Voxel;
 
+    [Serializable]
+    public class DiggingToolInfo
+    {
+        [SerializeField] private Item item;
+        [SerializeField] private bool penetratesRock;
+        [SerializeField] private float digDuration = 1;
+
+        public Item Item { get { return item; } }
+        public bool PenetratesRock { get { return penetratesRock; } }
+        public float DigDuration { get { return digDuration; } }
+    }
+
     public class VoxelDigger : MonoBehaviour
     {
+        [Tooltip("List in priority order where best tool is first. Last tool should be bare hands.")]
+        [SerializeField] private DiggingToolInfo[] prioritizedDiggingTools;
+        [SerializeField] private Item dynamite;
+        [SerializeField] private GameObject litDynamite;
+
         [SerializeField] private FMODUnity.StudioEventEmitter digSoundEmitter;
 
-        private ParticleSystem dirtParticles;
+        private const float ShowSwipeDuration = 0.1f;
+        private const float HideSwipeDuration = 0.4f;
+        private WaitForSeconds waitShowSwipe = new WaitForSeconds(ShowSwipeDuration);
+        private WaitForSeconds waitHideSwipe = new WaitForSeconds(HideSwipeDuration);
         private Canvas swipeCanvas;
+        private ParticleSystem dirtParticles;
+        private bool isDigging = false;
 
         private void Awake()
         {
@@ -20,11 +43,15 @@
 
         private void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
+            CheckOverhead();
+            if (Input.GetButtonDown("Fire1") && !isDigging)
             {
                 TryDig();
             }
-            CheckOverhead();
+            else if (Input.GetButtonDown("Fire3"))
+            {
+                TryDynamite();
+            }
         }
 
         /// <summary>
@@ -57,33 +84,72 @@
                 Voxel voxel;
                 if (TerrainGenerator.Instance.GetVoxel(worldPosition, out voxel))
                 {
-                    if (voxel.data == Voxel.VoxelType.Stone)
+                    // Identify best tool:
+                    DiggingToolInfo tool = null;
+                    for (int i = 0; i < prioritizedDiggingTools.Length; i++)
                     {
-                        Debug.Log("Stone!"); //[TODO]
+                        var toolToCheck = prioritizedDiggingTools[i];
+                        if (toolToCheck.Item == null || ServiceLocator.Get<IInventory>().HasItem(toolToCheck.Item))
+                        {
+                            tool = toolToCheck;
+                            break;
+                        }
                     }
-                    else
+                    if (tool == null) return;
+
+                    // Check if we can dig through the voxel type:
+                    var canPenetrate = (voxel.data != Voxel.VoxelType.Stone) || tool.PenetratesRock;
+                    if (canPenetrate)
                     {
-                        TerrainGenerator.Instance.SetVoxel(worldPosition, Voxel.VoxelType.Air);
-                        StartCoroutine(PlayDigEffect());
+                        StartCoroutine(Dig(tool, worldPosition));
                     }
                 }
             }
         }
 
-        private IEnumerator PlayDigEffect()
+        private IEnumerator Dig(DiggingToolInfo tool, Vector3 worldPosition)
         {
+            if (tool == null) yield break;
+
+            isDigging = true;
+
             //digSoundEmitter.Play();
+
             if (dirtParticles != null)
             {
                 dirtParticles.Play();
             }
-            swipeCanvas.enabled = true;
-            yield return new WaitForSeconds(0.1f);
-            swipeCanvas.enabled = false;
-            yield return new WaitForSeconds(0.4f);
+
+            float finishTime = Time.time + tool.DigDuration;
+            while (Time.time < finishTime)
+            {
+                swipeCanvas.enabled = true;
+                yield return waitShowSwipe;
+                swipeCanvas.enabled = false;
+                if (Time.time + HideSwipeDuration < finishTime)
+                {
+                    yield return waitHideSwipe;
+                }
+                else
+                {
+                    yield return new WaitForSeconds(finishTime - Time.time);
+                }
+            }
+            TerrainGenerator.Instance.SetVoxel(worldPosition, Voxel.VoxelType.Air);
+            yield return new WaitForSeconds(0.25f);
             if (dirtParticles != null)
             {
                 dirtParticles.Stop();
+            }
+            isDigging = false;
+        }
+
+        private void TryDynamite()
+        {
+            if (ServiceLocator.Get<IInventory>().HasItem(dynamite))
+            {
+                ServiceLocator.Get<IInventory>().RemoveItem(dynamite);
+                Instantiate(litDynamite, transform.position + transform.forward, Quaternion.identity);
             }
         }
     }
