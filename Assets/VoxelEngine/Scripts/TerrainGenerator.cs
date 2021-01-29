@@ -38,6 +38,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
 
     void Awake()
     {
+        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
         try
         {
             var terrainSetting = GetComponent<TerrainToolSet>().GetTerrainSetting();
@@ -47,7 +48,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
         catch (System.Exception err)
         {
 
-            Debug.Log("Using defaults  for terrain gen ");
+            Debug.Log("Using defaults for terrain gen: " + err.Message);
         }
 
         VoxelMeshBuilder.InitializeShaderParameter();
