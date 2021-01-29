@@ -190,6 +190,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492f30e920fac7940bd91bf457bf4c22, type: 3}
+--- !u!1 &130576080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 104040711}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 130576081}
+  m_Layer: 0
+  m_Name: closet (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &130576081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 104040711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130576080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &341814510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -426,6 +456,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2036995200}
+  terrainToolSet: {fileID: 0}
+  terrainSetting:
+    Size: 0
+    chunkSize: {x: 32, y: 32, z: 32}
+    chunkSpawnSize: {x: 3, y: 3}
   chunkSize: {x: 32, y: 128, z: 32}
   chunkSpawnSize: {x: 1, y: 1}
   chunkMaterial: {fileID: 2100000, guid: 0fbb6114864c2014b87fc493434a98af, type: 2}
@@ -443,8 +478,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3a56f70e885ba4f9fbc476a75e5eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSettings: []
-  currentSize: 0
+  terrainSettings:
+  - Size: 0
+    chunkSize: {x: 32, y: 128, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 1
+    chunkSize: {x: 64, y: 258, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 2
+    chunkSize: {x: 128, y: 512, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 2
+    chunkSize: {x: 256, y: 512, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 2
+    chunkSize: {x: 256, y: 512, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 0
+    chunkSize: {x: 16, y: 128, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  currentSize: 3
 --- !u!4 &2036995200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8275689062710629191, guid: 6f3fd7e17d1f0644cb5e140170326d66,
@@ -535,7 +588,7 @@ PrefabInstance:
     - target: {fileID: 975791350439256791, guid: 3cd47d23adb827d4d8b5a5d6d9a2d059,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 975791350439256791, guid: 3cd47d23adb827d4d8b5a5d6d9a2d059,
         type: 3}

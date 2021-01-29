@@ -18,36 +18,7 @@ public class TerrainToolSet : MonoBehaviour
 
             return terrainSettings.Random();
         }
-        return terrainSettings.Where(t => t.Size == currentSize).ToList()[0];
+        return terrainSettings.Where(t => t.Size == currentSize).ToList().Random();
 
     }
 }
-
-// TODO , Use this instead of easy buttons 
-#if UNITY_EDITOR
-[CustomEditor(typeof(TerrainToolSet))]
-public class TerrainToolSetEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        var myTarget = (TerrainToolSet)target;
-
-
-        DrawDefaultInspector();
-        if (GUILayout.Button("Change Size"))
-        {
-            //myTarget.addEddyScripts();
-        }
-
-
-
-
-        // myTarget.experience = EditorGUILayout.IntField("Experience", myTarget.experience);
-        //EditorGUILayout.LabelField("Level", myTarget.Level.ToString());
-    }
-
-
-}
-
-#endif
-

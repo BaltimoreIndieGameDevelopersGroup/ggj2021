@@ -7,6 +7,8 @@ using UnityEngine;
 public class TerrainGenerator : Singleton<TerrainGenerator>
 {
     public Transform target;
+    public TerrainToolSet terrainToolSet;
+    public TerrainSetting terrainSetting;
     public Vector3Int chunkSize = Vector3Int.one * 32;
     public Vector2Int chunkSpawnSize = Vector2Int.one * 3;
     public Material chunkMaterial;
@@ -41,7 +43,8 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
         if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
         try
         {
-            var terrainSetting = GetComponent<TerrainToolSet>().GetTerrainSetting();
+            terrainToolSet = GetComponent<TerrainToolSet>();
+            terrainSetting = terrainToolSet.GetTerrainSetting();
             chunkSize = terrainSetting.chunkSize;
             chunkSpawnSize = terrainSetting.chunkSpawnSize;
         }
