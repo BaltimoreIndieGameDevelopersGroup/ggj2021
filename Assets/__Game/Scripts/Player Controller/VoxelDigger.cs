@@ -11,10 +11,12 @@
         [SerializeField] private Item item;
         [SerializeField] private bool penetratesRock;
         [SerializeField] private float digDuration = 1;
+        [SerializeField] private FMODUnity.StudioEventEmitter fmodEventEmitter;
 
         public Item Item { get { return item; } }
         public bool PenetratesRock { get { return penetratesRock; } }
         public float DigDuration { get { return digDuration; } }
+        public FMODUnity.StudioEventEmitter FMODEventEmitter { get { return fmodEventEmitter; } }
     }
 
     public class VoxelDigger : MonoBehaviour
@@ -113,7 +115,7 @@
 
             isDigging = true;
 
-            //[TODO] digSoundEmitter.Play();
+            tool.FMODEventEmitter.Play();
 
             if (dirtParticles != null)
             {
