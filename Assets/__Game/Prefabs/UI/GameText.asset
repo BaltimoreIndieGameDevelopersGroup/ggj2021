@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9898a8d75a40c2a46b3eb9cc1fccb345, type: 3}
+  m_Name: GameText
+  m_EditorClassIdentifier: 
+  introText: The year is 1952. After a series of alien abductions the U.S. government
+    attempts to make First Contact. These attempts at communication are a disastrous
+    failure and the extraterrestrials see fit to enslave and neutralize the backwater
+    planet known as Earth. A resistance of Earthlings from around the globe form
+    an underground fighting force. As one of the top operatives of this cell you
+    have been intentionally captured. Your mission is to obtain whatever scraps of
+    alien technology you can and escape the camp. Good luck agent!
