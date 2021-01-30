@@ -8,6 +8,8 @@
 
     public class IntroScreen : MonoBehaviour
     {
+        [SerializeField] private GameText gameText;
+
         private IEnumerator Start()
         {
             GetComponent<Canvas>().enabled = true;
@@ -19,6 +21,7 @@
             var readInput = false;
 
             // Scroll text:
+            textMesh.text = gameText.IntroText;
             float elapsed = 0;
             while (elapsed < ScrollDuration)
             {
