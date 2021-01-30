@@ -25,13 +25,13 @@ namespace Game
             RaycastHit hit;
             if (Physics.Raycast(lightPos, centerDirection, out hit, maxSearchDistance, surfaceLayerMask))
             {
+                Debug.DrawLine(lightPos, hit.point, Color.blue);
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
                     pc.DetectedByGuard();
                     return true;
                 }
 
-                Quaternion yawRot = Quaternion.Euler(0, rot.y, 0);
 
                 //get the distance to the ground from the center beam
                 float centerBeamDistance = hit.distance;
@@ -44,20 +44,24 @@ namespace Game
                 lightPostBasePos.y = hit.point.y;
                 Vector3 relativeDirection = hit.point - lightPostBasePos;
                 float horizontalDistanceToHitPoint = relativeDirection.magnitude;
-
+                float rotX = Mathf.Atan2(horizontalDistanceToHitPoint, lightHeight);
+                float turnAngle = Vector3.SignedAngle(relativeDirection, Vector3.back, Vector3.up);
+                Debug.Log("turnAngle = " + turnAngle);
+                Quaternion yawRot = Quaternion.Euler(0, -turnAngle, 0);
 
                 //calculate the projected radius on the ground.
                 float centerRadius = Mathf.Tan(Mathf.Deg2Rad * halfAngle) * centerBeamDistance;
 
-                float horizontalDistacneToFrontBeamHitPoint = Mathf.Tan(Mathf.Deg2Rad * (rot.x + halfAngle)) * lightHeight;
+                float horizontalDistacneToFrontBeamHitPoint = Mathf.Tan(rotX + Mathf.Deg2Rad * halfAngle) * lightHeight;
                 float majorRadius = horizontalDistacneToFrontBeamHitPoint - horizontalDistanceToHitPoint;
 
-                float horizontalDistacneToRearBeamHitPoint = Mathf.Tan(Mathf.Deg2Rad * (rot.x - halfAngle)) * lightHeight;
+                float horizontalDistacneToRearBeamHitPoint = Mathf.Tan(rotX - Mathf.Deg2Rad * halfAngle) * lightHeight;
                 float minorRadius = horizontalDistacneToRearBeamHitPoint - horizontalDistanceToHitPoint;
 
                 //Debug.DrawLine(lightPos, (centerDirection * centerBeamDistance) + lightPos, Color.blue);
-                //Debug.DrawLine(lightPos, yawRot * ((Vector3.back * horizontalDistacneToFrontBeamHitPoint) + lightPostBasePos), Color.red);
-                //Debug.DrawLine(lightPos, yawRot * ((Vector3.back * horizontalDistacneToRearBeamHitPoint) + lightPostBasePos), Color.red);
+                Debug.DrawLine(lightPos, relativeDirection + lightPostBasePos, Color.black);
+                Debug.DrawLine(lightPos, (yawRot * (Vector3.back * horizontalDistacneToFrontBeamHitPoint) + lightPostBasePos), Color.red);
+                Debug.DrawLine(lightPos, (yawRot * (Vector3.back * horizontalDistacneToRearBeamHitPoint) + lightPostBasePos), Color.green);
 
                 int majorCount = (int)(majorRadius / tickInterval);
                 int minorCount = (int)(minorRadius / tickInterval);
@@ -81,7 +85,7 @@ namespace Game
                     if (centerTickMark != 0)
                     {
                         float tickMarkAngleRadius = Mathf.Atan2(horizontalDistanceToTickMark, lightHeight);
-                        float tickAngle = tickMarkAngleRadius - Mathf.Deg2Rad * rot.x;
+                        float tickAngle = tickMarkAngleRadius - Mathf.Deg2Rad * rotX;
                         float h = Mathf.Sin(tickAngle) * centerBeamDistance;
                         float hSq = h * h;
                         float b = Mathf.Sqrt(Mathf.Abs(centerRadius * centerRadius - hSq));
@@ -119,7 +123,7 @@ namespace Game
 
                     if (Physics.Raycast(lightPos, castDir, out hit, maxSearchDistance))
                     {
-                        Debug.DrawLine(lightPos, hit.point, Color.blue);
+                        Debug.DrawLine(lightPos, hit.point, Color.yellow);
                         if (hit.transform.gameObject.tag == "Player")
                         {
                             pc.DetectedByGuard();
