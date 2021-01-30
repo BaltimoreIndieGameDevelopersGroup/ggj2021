@@ -60,6 +60,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a4e7df946f29c47bd5c11572b05bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  banter:
+  - lines:
+    - "They don\u2019t pay us enough for this."
+    - Maybe we should unionize.
+  - lines:
+    - How are the wife and kids?
+    - Well, you know.
+    - And the miss?
+    - "She\u2019s great!"
+  - lines:
+    - Some weather.
+    - Yup.
+    - Got a cig?
+    - Sure.
+    - Got a light?
+    - Why do I get stuck with you, every time.
+  - lines:
+    - "There\u2019s just too many vowels."
+    - "It\u2019s annoying isn\u2019t it?"
+    - Such a clunky language.
+    - "Boss said we\u2019ve got to learn it. "
+  - lines:
+    - We playing cards tonight?
+    - Not with the deck you made us use last night.
+    - "Saying I\u2019m cheating?"
+    - "I\u2019m saying I don\u2019t like your deck."
+  - lines:
+    - You hear that?
+    - Probably those racoons again.
+  - lines:
+    - Captain keeps yelling at me.
+    - For what?
+    - "Says prisoners keep escaping\u2026?"
+    - Escaping, here?
 --- !u!1001 &2091018782649984274
 PrefabInstance:
   m_ObjectHideFlags: 0

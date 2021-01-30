@@ -139,13 +139,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3336362831410994085}
-    characterCount: 531
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 86
-    wordCount: 88
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 12
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -295,7 +295,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!114 &3336362832151684363
 MonoBehaviour:
