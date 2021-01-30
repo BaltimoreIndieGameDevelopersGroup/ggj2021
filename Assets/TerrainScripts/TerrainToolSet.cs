@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using System.Threading.Tasks;
 using static OptIn.Voxel.Voxel;
+using OptIn.Voxel;
 
 [Serializable]
 public class ChunkPart
@@ -77,6 +78,21 @@ public class TerrainToolSet : MonoBehaviour
            Vector3 calcLocation = spawnOffset + new Vector3(x, 0, z);
            Instantiate(building, calcLocation, new Quaternion());
        });
+    }
+
+    void setVoxel()
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, 1 << LayerMask.NameToLayer("Voxel")))
+        {
+            var worldPosition = hit.point + ray.direction * 0.01f;
+            Voxel voxel;
+            if (TerrainGenerator.Instance.GetVoxel(worldPosition, out voxel))
+            {
+            }
+
+        }
     }
     internal void addChunkPos(Chunk newChunk)
     {
