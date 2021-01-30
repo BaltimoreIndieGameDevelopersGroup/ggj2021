@@ -22,5 +22,11 @@
         /// </summary>
         bool HasItem(IItem item);
 
+        /// <summary>
+        /// Checks if the inventory has at least one secret.
+        /// </summary>
+        /// <returns></returns>
+        bool HasASecretItem();
+
     }
 }

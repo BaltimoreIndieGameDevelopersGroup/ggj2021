@@ -46,8 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b92115302222d64d80252e5613fc1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plans: {fileID: 4958463626260259700, guid: 2c13be0101ec5c0488d2f4b8e19f1e6f, type: 3}
-  potentialPickups:
+  potentialSecrets:
+  - {fileID: 4958463626260259700, guid: 2c13be0101ec5c0488d2f4b8e19f1e6f, type: 3}
+  - {fileID: 4958463626260259700, guid: 76608c3b14de34e4990fe7caf66fc0a0, type: 3}
+  - {fileID: 4958463626260259700, guid: c6f297349a81eda4d9f8a81f2acca736, type: 3}
+  - {fileID: 4958463626260259700, guid: d1885b16ac2899148a576273de49df84, type: 3}
+  - {fileID: 4958463626260259700, guid: 8e49d244318d0f042908cfc35cd61066, type: 3}
+  - {fileID: 4958463626260259700, guid: e4c6c34e8c1d35f48b51e33fc866579e, type: 3}
+  potentialTools:
   - {fileID: 7782303480204587072, guid: b6c9013a0b49ffb44a18e5647c395d2e, type: 3}
   - {fileID: 3800346181004314243, guid: 4182a8399bdd1c949b4e665e865497f2, type: 3}
   - {fileID: 4835164122996408363, guid: 7cd66dc94499a464bbad8cd186246ba0, type: 3}
@@ -107,9 +113,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 5
+  m_Color: {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
+  m_Intensity: 2
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

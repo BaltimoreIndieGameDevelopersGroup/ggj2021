@@ -5,5 +5,6 @@
     /// </summary>
     public interface IItem
     {
+        bool IsASecretItem { get; }
     }
 }

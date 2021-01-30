@@ -36,7 +36,7 @@
             }
 
             // Explode:
-            //[TODO] Play explosion sound. Screen shake?
+            //[TODO] Screen shake?
 
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 

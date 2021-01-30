@@ -4,26 +4,34 @@
 
     public class Building : MonoBehaviour
     {
-        [SerializeField] private Pickup plans;
-        [SerializeField] private Pickup[] potentialPickups;
-
-        private static bool hasInstantiatedPlans = false;
-
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        static void Init()
-        {
-            hasInstantiatedPlans = false;
-        }
+        [SerializeField] private Pickup[] potentialSecrets;
+        [SerializeField] private Pickup[] potentialTools;
 
         private void Start()
         {
-            if (plans == null || potentialPickups.Length == 0) return;
+            if (potentialSecrets.Length > 0)
+            {
+                InstantiatePickup(-1, -1, potentialSecrets[Random.Range(0, potentialSecrets.Length)]);
+                if (Random.value > 0.5f)
+                {
+                    InstantiatePickup(1, 1, potentialSecrets[Random.Range(0, potentialSecrets.Length)]);
+                }
+            }
 
-            var prefab = !hasInstantiatedPlans ? plans : potentialPickups[Random.Range(0, potentialPickups.Length)];
-            Instantiate(prefab, transform.position + new Vector3(-1f, 0, -1f), Quaternion.identity);
-            prefab = potentialPickups[Random.Range(0, potentialPickups.Length)];
-            Instantiate(prefab, transform.position + new Vector3(1f, 0, 1f), Quaternion.identity);
-            hasInstantiatedPlans = true;
+            if (potentialTools.Length > 0)
+            {
+                InstantiatePickup(-1, 1, potentialTools[Random.Range(0, potentialTools.Length)]);
+                if (Random.value > 0.5f)
+                {
+                    InstantiatePickup(1, -1, potentialTools[Random.Range(0, potentialTools.Length)]);
+                }
+            }
+        }
+
+        private void InstantiatePickup(float x, float z, Pickup prefab)
+        {
+            Instantiate(prefab, transform.position + new Vector3(x, 0, z), Quaternion.identity);
+
         }
 
     }
