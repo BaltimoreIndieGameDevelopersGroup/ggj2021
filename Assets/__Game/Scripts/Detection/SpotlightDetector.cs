@@ -6,19 +6,21 @@ namespace Game
 {
     public class SpotlightDetector : MonoBehaviour
     {
+        public Light myLight;
         LayerMask surfaceLayerMask;
         void Awake()
         {
-            surfaceLayerMask = LayerMask.GetMask("Player", "Surface");
+            surfaceLayerMask = LayerMask.GetMask("Player", "Surface", "Voxel");
         }
 
-        public bool SpotlightSearch(Vector3 lightPos, float pitch, float yaw, float beamAngle, float tickInterval, float maxSearchDistance = 100)
+        public bool SpotlightSearch(Vector3 lightPos, Quaternion rot, float beamAngle, float tickInterval, float maxSearchDistance = 100)
         {
-            return SpotlightSearch(lightPos, new Vector3(pitch, yaw, 0), beamAngle, tickInterval, maxSearchDistance);
+            return SpotlightSearch(lightPos, rot.eulerAngles, beamAngle, tickInterval, maxSearchDistance);
         }
 
         public bool SpotlightSearch(Vector3 lightPos, Vector3 rot, float beamAngle, float tickInterval, float maxSearchDistance = 100)
         {
+            myLight.spotAngle = beamAngle + 1;
             IPlayerController pc = ServiceLocator.Get<IPlayerController>();
             float halfAngle = beamAngle / 2f;
             Vector3 centerDirection = Quaternion.Euler(rot) * Vector3.down;
@@ -47,7 +49,6 @@ namespace Game
                 float horizontalDistanceToHitPoint = relativeDirection.magnitude;
                 float rotXRadian = Mathf.Atan2(horizontalDistanceToHitPoint, lightHeight);
                 float turnAngle = Vector3.SignedAngle(relativeDirection, Vector3.back, Vector3.up);
-                Debug.Log("turnAngle = " + turnAngle);
                 Quaternion yawRot = Quaternion.Euler(0, -turnAngle, 0);
 
                 //calculate the projected radius on the ground.
@@ -93,11 +94,8 @@ namespace Game
                         // #5
                         float h = Mathf.Tan(tickAngle) * centerBeamDistance;
                         float hSq = h * h;
-                        Debug.Log("centerRadius = " + centerRadius);
-                        Debug.Log("h = " + h);
                         // #6
                         float b = Mathf.Sqrt(Mathf.Abs(centerRadiusSq - hSq));
-                        Debug.Log("b = " + b);
                         // #7
                         float middleDistance = Mathf.Sqrt(centerDeamDistanceSq + hSq);
                         // #8
@@ -105,7 +103,6 @@ namespace Game
                         // #9
                         farRight = b * tickHitDistance / middleDistance;
                     }
-                    Debug.Log("farRight = " + farRight);
                     int rightCount = (int)(farRight / tickInterval);
 
                     Vector3 centerTickPos = Vector3.back * horizontalDistanceToTickMark;

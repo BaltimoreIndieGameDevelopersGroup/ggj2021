@@ -21,7 +21,7 @@ namespace Game
             //call for spotlight detection
             if (useObjectTransform)
             {
-                spotlight.SpotlightSearch(transform.position, transform.rotation.eulerAngles, beamAngle, tickMarkInterval);
+                spotlight.SpotlightSearch(transform.position, transform.rotation, beamAngle, tickMarkInterval);
             }
             else
             {
