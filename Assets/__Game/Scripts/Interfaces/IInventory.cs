@@ -28,5 +28,7 @@
         /// <returns></returns>
         bool HasASecretItem();
 
+        int Score { get; }
+
     }
 }
