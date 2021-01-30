@@ -40,10 +40,11 @@ public class TerrainToolSet : MonoBehaviour
     public Vector3 spawnOffset = new Vector3(0.5f, 80f, 0.5f);
     public Chunk firstChunk;
     public List<GameObject> gameBuildings;
-
+    public List<GameObject> spawnedObjects;
 
     public int xSpawnLimit = 2;
     public int zSpawnLimit = 2;
+    public float minBuildingSeperation = 5;
     public TerrainSetting GetTerrainSetting()
     {
 
@@ -72,12 +73,43 @@ public class TerrainToolSet : MonoBehaviour
 
 
         gameBuildings.ForEach(building =>
-       {
-           int x = UnityEngine.Random.Range(xSpawnLimit, currentTerrainSetting.chunkSize.x - xSpawnLimit);
-           int z = UnityEngine.Random.Range(zSpawnLimit, currentTerrainSetting.chunkSize.z - zSpawnLimit);
-           Vector3 calcLocation = spawnOffset + new Vector3(x, 0, z);
-           Instantiate(building, calcLocation, new Quaternion());
-       });
+        {
+            Vector3 calcLocation = getGoodLocation();
+
+            spawnedObjects.Add(Instantiate(building, calcLocation, new Quaternion()));
+        });
+    }
+
+    private Vector3 getGoodLocation()
+    {
+        int x = UnityEngine.Random.Range(xSpawnLimit, currentTerrainSetting.chunkSize.x - xSpawnLimit);
+        int z = UnityEngine.Random.Range(zSpawnLimit, currentTerrainSetting.chunkSize.z - zSpawnLimit);
+        Vector3 calcLocation = spawnOffset + new Vector3(x, 0, z);
+
+        if (spawnedObjects.Count == 0)
+        {
+
+            return calcLocation;
+        }
+        float distOfCloset = spawnedObjects.Min(spawnedOb =>
+        {
+
+            Vector3 offset = calcLocation - spawnedOb.transform.position;
+            float sqrLen = offset.sqrMagnitude;
+            // Debug.Log(sqrLen);
+            return sqrLen;
+
+
+        });
+
+        if (distOfCloset < minBuildingSeperation)
+        {
+            return getGoodLocation();
+        }
+
+
+
+        return calcLocation;
     }
 
     void setVoxel()
