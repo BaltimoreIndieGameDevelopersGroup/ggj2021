@@ -17,6 +17,8 @@
 
         private void Start()
         {
+            if (plans == null || potentialPickups.Length == 0) return;
+
             var prefab = !hasInstantiatedPlans ? plans : potentialPickups[Random.Range(0, potentialPickups.Length)];
             Instantiate(prefab, transform.position + new Vector3(-1f, 0, -1f), Quaternion.identity);
             prefab = potentialPickups[Random.Range(0, potentialPickups.Length)];
