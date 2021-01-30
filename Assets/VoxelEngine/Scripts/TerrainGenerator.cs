@@ -161,7 +161,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
             }
             return true;
         };
-
+        terrainToolSet.addChunkPos(newChunk);
         chunks.Add(chunkPosition, newChunk);
         return newChunk;
     }

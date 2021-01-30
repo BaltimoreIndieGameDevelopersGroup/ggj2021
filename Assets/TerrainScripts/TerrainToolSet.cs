@@ -12,6 +12,7 @@ public class TerrainToolSet : MonoBehaviour
     public List<TerrainSetting> terrainSettings;
     public List<Vector3Int> chunkPos;
     public SizeSetting currentSize;
+    public List<Chunk> chunkCache;
 
 
 
@@ -32,5 +33,11 @@ public class TerrainToolSet : MonoBehaviour
     internal void addChunkPos(Vector3Int chunkPosition)
     {
         chunkPos.Add(chunkPosition);
+    }
+
+    internal void addChunkPos(Chunk newChunk)
+    {
+        chunkCache.Add(newChunk);
+        newChunk.Voxels.ToList().ForEach(v => print(v.position));
     }
 }

@@ -14,7 +14,7 @@ public class Chunk : MonoBehaviour
     TerrainGenerator generator;
     Vector3Int chunkPosition;
     Vector3Int chunkSize;
-    
+
     bool initialized;
     bool dirty;
     bool argent;
@@ -43,7 +43,7 @@ public class Chunk : MonoBehaviour
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshCollider = GetComponent<MeshCollider>();
-        mesh = new Mesh {indexFormat = IndexFormat.UInt32};
+        mesh = new Mesh { indexFormat = IndexFormat.UInt32 };
         CanUpdate = () => true;
     }
 
@@ -61,7 +61,7 @@ public class Chunk : MonoBehaviour
     {
         meshFilter.mesh = mesh;
     }
-    
+
     public void Init(Vector3Int position, TerrainGenerator parent)
     {
         chunkPosition = position;
@@ -76,7 +76,7 @@ public class Chunk : MonoBehaviour
     IEnumerator InitUpdator()
     {
         int numVoxels = chunkSize.x * chunkSize.y * chunkSize.z;
-        voxels =  new Voxel[numVoxels];
+        voxels = new Voxel[numVoxels];
         voxelData = new NoiseGenerator.NativeVoxelData(VoxelUtil.ToInt3(chunkSize));
         yield return voxelData.Generate(voxels, VoxelUtil.ToInt3(chunkPosition), VoxelUtil.ToInt3(chunkSize));
         dirty = true;
@@ -87,7 +87,7 @@ public class Chunk : MonoBehaviour
     {
         if (!initialized)
             return;
-        
+
         if (Updating)
             return;
 
@@ -102,27 +102,27 @@ public class Chunk : MonoBehaviour
 
     IEnumerator UpdateMesh()
     {
-        if(Updating)
+        if (Updating)
             yield break;
 
         if (!generator.CanUpdate)
             yield break;
 
         generator.UpdatingChunks++;
-        
+
         int3 chunkSizeInt3 = VoxelUtil.ToInt3(chunkSize);
 
         List<Voxel[]> neighborVoxels = generator.GetNeighborVoxels(chunkPosition, 1);
-        
+
         lightData?.Dispose();
         lightData = new VoxelLightBuilder.NativeLightData(chunkSizeInt3);
         yield return lightData.ScheduleLightingJob(neighborVoxels, VoxelUtil.ToInt3(chunkPosition), chunkSizeInt3, 1, argent);
         meshData?.Dispose();
         meshData = new VoxelMeshBuilder.NativeMeshData(VoxelUtil.ToInt3(chunkSize));
         yield return meshData.ScheduleMeshingJob(voxels, lightData, VoxelUtil.ToInt3(chunkSize), generator.SimplifyingMethod, argent);
-        
+
         meshData.GetMeshInformation(out int verticeSize, out int indicesSize);
-        
+
         if (verticeSize > 0 && indicesSize > 0)
         {
             mesh.Clear();
@@ -134,13 +134,13 @@ public class Chunk : MonoBehaviour
 
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
-            
-            if(argent)
+
+            if (argent)
                 SetSharedMesh(mesh);
             else
                 VoxelColliderBuilder.Instance.Enqueue(this, mesh);
         }
-        
+
         lightData.Dispose();
         meshData.Dispose();
         dirty = false;
@@ -162,7 +162,7 @@ public class Chunk : MonoBehaviour
             voxel = Voxel.Empty;
             return false;
         }
-        
+
         if (!VoxelUtil.BoundaryCheck(gridPosition, chunkSize))
         {
             voxel = Voxel.Empty;
@@ -179,13 +179,15 @@ public class Chunk : MonoBehaviour
         {
             return false;
         }
-        
+
         if (!VoxelUtil.BoundaryCheck(gridPosition, chunkSize))
         {
             return false;
         }
-
-        voxels[VoxelUtil.To1DIndex(gridPosition, chunkSize)].data = type;
+        int voxelIndex = VoxelUtil.To1DIndex(gridPosition, chunkSize);
+        var locVoxel = voxels[voxelIndex];
+        locVoxel.data = type;
+        locVoxel.position = gridPosition;
         dirty = true;
         argent = true;
         return true;
