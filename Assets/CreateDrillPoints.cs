@@ -38,7 +38,7 @@ public class CreateDrillPoints : MonoBehaviour
                 if (TerrainGenerator.Instance.GetVoxel(point, out voxel))
                 {
 
-                    print(voxel.data);
+                    //print(voxel.data);
                     if (yIndex < 1)
                     {
 
