@@ -9,6 +9,7 @@
     {
         [SerializeField] private GameObject fencePrefab;
         [SerializeField] private GameObject exit;
+        [SerializeField] private GameObject aliensPrefab;
 
         private const int unitsOutsideFence = 3;
 
@@ -49,6 +50,9 @@
 
             // Place exit at gap in fence:
             Instantiate(exit, new Vector3(size.x - unitsOutsideFence + 0.75f, 0, size.z / 2), Quaternion.identity);
+
+            // Place aliens at corners:
+            //Instantiate(aliensPrefab, new Vector3(3, ))
         }
     }
 }
