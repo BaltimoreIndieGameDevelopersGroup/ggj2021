@@ -12,7 +12,7 @@ public class CreateDrillPoints : MonoBehaviour
     public Vector3 m_Size, m_Min, m_Max;
     public int numberOfBoxesPerRow = 6;
     public int yLevels = 10;
-    public float yIncerment = 0.5f;
+    public float yincrement = 0.2f;
     List<Vector3> listOfPoints;
 
     private void Start()
@@ -26,7 +26,7 @@ public class CreateDrillPoints : MonoBehaviour
         int yIndex = 0;
         while (yIndex < yLevels)
         {
-            createPoints(yIndex * yIncerment);
+            createPoints(yIndex * yincrement);
             yIndex++;
             listOfPoints.ForEach(point =>
             {

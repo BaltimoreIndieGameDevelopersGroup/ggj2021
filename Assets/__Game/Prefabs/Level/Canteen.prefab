@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Max: {x: 4.5, y: 0.15, z: 4.5}
   numberOfBoxesPerRow: 20
   yLevels: 20
-  yIncerment: 0.2
+  yincrement: 0.2
 --- !u!1 &7759767011237860950
 GameObject:
   m_ObjectHideFlags: 0
