@@ -20,7 +20,7 @@ public class ChunkPart
     {
 
         // newChunk.
-        positionList = newChunk.Voxels.ToList().Where(v => v.data == VoxelType.Grass).Select(v => v.position).ToList();
+        //   positionList = newChunk.Voxels.ToList().Where(v => v.data == VoxelType.Grass).Select(v => v.position).ToList();
 
     }
 }
@@ -75,6 +75,6 @@ public class TerrainToolSet : MonoBehaviour
     {
         //   chunkCache.Add(newChunk);
 
-        chunkParts.Add(new ChunkPart(newChunk));
+        //  chunkParts.Add(new ChunkPart(newChunk));
     }
 }

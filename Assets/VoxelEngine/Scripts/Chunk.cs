@@ -187,10 +187,11 @@ public class Chunk : MonoBehaviour
         {
             return false;
         }
-        int voxelIndex = VoxelUtil.To1DIndex(gridPosition, chunkSize);
-        var locVoxel = voxels[voxelIndex];
-        locVoxel.data = type;
-        locVoxel.position = gridPosition;
+        //int voxelIndex = VoxelUtil.To1DIndex(gridPosition, chunkSize);
+        // var locVoxel = voxels[voxelIndex];
+        voxels[VoxelUtil.To1DIndex(gridPosition, chunkSize)].data = type;
+        //  locVoxel.data = type;
+        // locVoxel.position = gridPosition;
         dirty = true;
         argent = true;
         return true;
