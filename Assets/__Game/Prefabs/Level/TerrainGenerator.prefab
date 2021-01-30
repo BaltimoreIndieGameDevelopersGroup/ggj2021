@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8976701138479527996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8976701138479527997}
+  - component: {fileID: 8976701138479527994}
+  - component: {fileID: 8976701138479527995}
+  m_Layer: 0
+  m_Name: TerrainGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8976701138479527997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976701138479527996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8976701138479527994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976701138479527996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1578462b0381d6439a1f0f3a2ad8c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  terrainToolSet: {fileID: 0}
+  terrainSetting:
+    Size: 0
+    chunkSize: {x: 32, y: 32, z: 32}
+    chunkSpawnSize: {x: 3, y: 3}
+  chunkSize: {x: 32, y: 128, z: 32}
+  chunkSpawnSize: {x: 1, y: 1}
+  chunkMaterial: {fileID: 2100000, guid: 0fbb6114864c2014b87fc493434a98af, type: 2}
+  maxGenerateChunksInFrame: 3
+  simplifyingMethod: 2
+  updatingChunks: 0
+--- !u!114 &8976701138479527995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976701138479527996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3a56f70e885ba4f9fbc476a75e5eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainSettings:
+  - Size: 0
+    chunkSize: {x: 32, y: 128, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 1
+    chunkSize: {x: 64, y: 128, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 2
+    chunkSize: {x: 128, y: 128, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 2
+    chunkSize: {x: 256, y: 128, z: 64}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 2
+    chunkSize: {x: 512, y: 128, z: 64}
+    chunkSpawnSize: {x: 1, y: 1}
+  - Size: 0
+    chunkSize: {x: 32, y: 128, z: 32}
+    chunkSpawnSize: {x: 1, y: 1}
+  chunkPos: []
+  currentSize: 0
+  chunkParts: []
+  currentTerrainSetting:
+    Size: 0
+    chunkSize: {x: 32, y: 32, z: 32}
+    chunkSpawnSize: {x: 3, y: 3}
+  spawnOffset: {x: 0.5, y: 80, z: 0.5}
+  firstChunk: {fileID: 0}
+  basicTestObject: {fileID: 1602702143318650511, guid: 2c239790f51eb4648a3bf60131464f39,
+    type: 3}

@@ -17,16 +17,11 @@
 
         private void Start()
         {
-            if (!hasInstantiatedPlans)
-            {
-                hasInstantiatedPlans = true;
-                Instantiate(plans, transform);
-            }
-            else
-            {
-                var prefab = potentialPickups[Random.Range(0, potentialPickups.Length)];
-                Instantiate(prefab, transform);
-            }
+            var prefab = !hasInstantiatedPlans ? plans : potentialPickups[Random.Range(0, potentialPickups.Length)];
+            Instantiate(prefab, transform.position + new Vector3(-1f, 0, -1f), Quaternion.identity);
+            prefab = potentialPickups[Random.Range(0, potentialPickups.Length)];
+            Instantiate(prefab, transform.position + new Vector3(1f, 0, 1f), Quaternion.identity);
+            hasInstantiatedPlans = true;
         }
 
     }
