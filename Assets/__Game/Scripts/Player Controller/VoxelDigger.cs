@@ -62,7 +62,7 @@
         /// </summary>
         private void CheckOverhead()
         {
-            var worldPosition = transform.position + 1.5f * Vector3.up;
+            var worldPosition = transform.position + 2.5f * Vector3.up;
             Voxel voxel;
             if (TerrainGenerator.Instance.GetVoxel(worldPosition, out voxel))
             {

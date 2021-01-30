@@ -26,5 +26,10 @@
         {
             return items.Contains(item);
         }
+
+        public bool HasASecretItem()
+        {
+            return items.Find(x => x.IsASecretItem) != null;
+        }
     }
 }
