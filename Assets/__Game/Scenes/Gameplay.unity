@@ -697,6 +697,23 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 386422103}
+    - target: {fileID: 8976701138479527995, guid: bf14b286ae7246148aedaf704eff9a5f,
+        type: 3}
+      propertyPath: gameBuildings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976701138479527995, guid: bf14b286ae7246148aedaf704eff9a5f,
+        type: 3}
+      propertyPath: gameBuildings.Array.data[0]
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: c26009f289a7ab34bafeea4d92d4a4d5,
+        type: 3}
+    - target: {fileID: 8976701138479527995, guid: bf14b286ae7246148aedaf704eff9a5f,
+        type: 3}
+      propertyPath: gameBuildings.Array.data[1]
+      value: 
+      objectReference: {fileID: 1602702143318650511, guid: 2c239790f51eb4648a3bf60131464f39,
+        type: 3}
     - target: {fileID: 8976701138479527996, guid: bf14b286ae7246148aedaf704eff9a5f,
         type: 3}
       propertyPath: m_Name

@@ -38,7 +38,7 @@ public class TerrainToolSet : MonoBehaviour
 
     public Vector3 spawnOffset = new Vector3(0.5f, 80f, 0.5f);
     public Chunk firstChunk;
-    public GameObject basicTestObject;
+    public List<GameObject> gameBuildings;
 
 
     public int xSpawnLimit = 2;
@@ -60,16 +60,23 @@ public class TerrainToolSet : MonoBehaviour
     {
 
         await Task.Delay(TimeSpan.FromSeconds(5));
-        int x = UnityEngine.Random.Range(xSpawnLimit, currentTerrainSetting.chunkSize.x - xSpawnLimit);
-        int z = UnityEngine.Random.Range(zSpawnLimit, currentTerrainSetting.chunkSize.z - zSpawnLimit);
 
-        placeObject(new Vector3(x, 0, z));
+
+        placeObject();
     }
-    public void placeObject(Vector3 spawnSpace)
-    {
-        Vector3 calcLocation = spawnOffset + spawnSpace;
-        Instantiate(basicTestObject, calcLocation, new Quaternion());
+    public void placeObject()
 
+    {
+
+
+
+        gameBuildings.ForEach(building =>
+       {
+           int x = UnityEngine.Random.Range(xSpawnLimit, currentTerrainSetting.chunkSize.x - xSpawnLimit);
+           int z = UnityEngine.Random.Range(zSpawnLimit, currentTerrainSetting.chunkSize.z - zSpawnLimit);
+           Vector3 calcLocation = spawnOffset + new Vector3(x, 0, z);
+           Instantiate(building, calcLocation, new Quaternion());
+       });
     }
     internal void addChunkPos(Chunk newChunk)
     {
