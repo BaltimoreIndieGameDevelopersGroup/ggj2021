@@ -40,6 +40,9 @@ public class TerrainToolSet : MonoBehaviour
     public Chunk firstChunk;
     public GameObject basicTestObject;
 
+
+    public int xSpawnLimit = 2;
+    public int zSpawnLimit = 2;
     public TerrainSetting GetTerrainSetting()
     {
 
@@ -57,8 +60,8 @@ public class TerrainToolSet : MonoBehaviour
     {
 
         await Task.Delay(TimeSpan.FromSeconds(5));
-        int x = UnityEngine.Random.Range(0, currentTerrainSetting.chunkSize.x);
-        int z = UnityEngine.Random.Range(0, currentTerrainSetting.chunkSize.z);
+        int x = UnityEngine.Random.Range(xSpawnLimit, currentTerrainSetting.chunkSize.x - xSpawnLimit);
+        int z = UnityEngine.Random.Range(zSpawnLimit, currentTerrainSetting.chunkSize.z - zSpawnLimit);
 
         placeObject(new Vector3(x, 0, z));
     }
