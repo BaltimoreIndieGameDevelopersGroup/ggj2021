@@ -35,8 +35,9 @@ namespace Game
 
                 //get the distance to the ground from the center beam
                 float centerBeamDistance = hit.distance;
-
+                float centerDeamDistanceSq = centerBeamDistance * centerBeamDistance;
                 float lightHeight = lightPos.y - hit.point.y;
+                float lightHeightSq = lightHeight * lightHeight;
                 Vector3 adjustPos = lightPos;
                 adjustPos.y = hit.point.y;
 
@@ -44,18 +45,18 @@ namespace Game
                 lightPostBasePos.y = hit.point.y;
                 Vector3 relativeDirection = hit.point - lightPostBasePos;
                 float horizontalDistanceToHitPoint = relativeDirection.magnitude;
-                float rotX = Mathf.Atan2(horizontalDistanceToHitPoint, lightHeight);
+                float rotXRadian = Mathf.Atan2(horizontalDistanceToHitPoint, lightHeight);
                 float turnAngle = Vector3.SignedAngle(relativeDirection, Vector3.back, Vector3.up);
                 Debug.Log("turnAngle = " + turnAngle);
                 Quaternion yawRot = Quaternion.Euler(0, -turnAngle, 0);
 
                 //calculate the projected radius on the ground.
                 float centerRadius = Mathf.Tan(Mathf.Deg2Rad * halfAngle) * centerBeamDistance;
-
-                float horizontalDistacneToFrontBeamHitPoint = Mathf.Tan(rotX + Mathf.Deg2Rad * halfAngle) * lightHeight;
+                float centerRadiusSq = centerRadius * centerRadius;
+                float horizontalDistacneToFrontBeamHitPoint = Mathf.Tan(rotXRadian + Mathf.Deg2Rad * halfAngle) * lightHeight;
                 float majorRadius = horizontalDistacneToFrontBeamHitPoint - horizontalDistanceToHitPoint;
 
-                float horizontalDistacneToRearBeamHitPoint = Mathf.Tan(rotX - Mathf.Deg2Rad * halfAngle) * lightHeight;
+                float horizontalDistacneToRearBeamHitPoint = Mathf.Tan(rotXRadian - Mathf.Deg2Rad * halfAngle) * lightHeight;
                 float minorRadius = horizontalDistacneToRearBeamHitPoint - horizontalDistanceToHitPoint;
 
                 //Debug.DrawLine(lightPos, (centerDirection * centerBeamDistance) + lightPos, Color.blue);
@@ -67,7 +68,7 @@ namespace Game
                 int minorCount = (int)(minorRadius / tickInterval);
                 int innerTickCount = majorCount + Mathf.Abs(minorCount) + 1;
                 int[] centerTicks = new int[innerTickCount];
-                for (int i = innerTickCount - 1; i >= 0; i--)
+                for (int i = 0; i < innerTickCount; i++)
                 {
                     centerTicks[i] = i + minorCount; ;
                 }
@@ -75,37 +76,55 @@ namespace Game
 
                 //add the fore most target pos
                 List<Vector3> castTargetPos = new List<Vector3>();
-                Vector3 frontTickPos = (Vector3.back * horizontalDistacneToFrontBeamHitPoint);// + lightPostBasePos;
+                Vector3 frontTickPos = (Vector3.back * horizontalDistacneToFrontBeamHitPoint);
                 castTargetPos.Add(frontTickPos);
+
                 //fill in the target positions
                 foreach (var centerTickMark in centerTicks)
                 {
+                    Debug.Log("CenterTickMark = " + centerTickMark);
+                    // #2
                     float horizontalDistanceToTickMark = horizontalDistanceToHitPoint + centerTickMark * tickInterval;
+                    float horizontalDistanceToTickMarkSq = horizontalDistanceToTickMark * horizontalDistanceToTickMark;
+                    Debug.Log("horizontalDistanceToTickMark = " + horizontalDistanceToTickMark);
                     float farRight = centerRadius;
                     if (centerTickMark != 0)
                     {
-                        float tickMarkAngleRadius = Mathf.Atan2(horizontalDistanceToTickMark, lightHeight);
-                        float tickAngle = tickMarkAngleRadius - Mathf.Deg2Rad * rotX;
-                        float h = Mathf.Sin(tickAngle) * centerBeamDistance;
+                        // #3
+                        float tickMarkAngleRadian = Mathf.Atan2(horizontalDistanceToTickMark, lightHeight);
+                        //Debug.Log("tickMarkAngleRadius = " + tickMarkAngleRadius);
+                        // #4
+                        float tickAngle = tickMarkAngleRadian - rotXRadian;
+                        //Debug.Log("tickAngle = " + tickAngle);
+                        // #5
+                        //float h = Mathf.Sin(tickAngle) * centerBeamDistance;
+                        float h = Mathf.Tan(tickAngle) * centerBeamDistance;
                         float hSq = h * h;
-                        float b = Mathf.Sqrt(Mathf.Abs(centerRadius * centerRadius - hSq));
-                        float middleDistance = Mathf.Sqrt(Mathf.Abs(centerBeamDistance * centerBeamDistance + hSq));
-                        float tickHitDistance = Mathf.Sqrt(Mathf.Abs(horizontalDistanceToTickMark * horizontalDistanceToTickMark + lightHeight * lightHeight));
-
+                        Debug.Log("centerRadius = " + centerRadius);
+                        Debug.Log("h = " + h);
+                        // #6
+                        float b = Mathf.Sqrt(Mathf.Abs(centerRadiusSq - hSq));
+                        Debug.Log("b = " + b);
+                        // #7
+                        float middleDistance = Mathf.Sqrt(centerDeamDistanceSq + hSq);
+                        // #8
+                        float tickHitDistance = Mathf.Sqrt(Mathf.Abs(horizontalDistanceToTickMarkSq + lightHeightSq));
+                        // #9
                         farRight = b * tickHitDistance / middleDistance;
                     }
+                    Debug.Log("farRight = " + farRight);
                     int rightCount = (int)(farRight / tickInterval);
 
                     Vector3 centerTickPos = Vector3.back * horizontalDistanceToTickMark;
-                    castTargetPos.Add(centerTickPos);
-                    for (int i = 1; i <= rightCount; i++)
+                    //castTargetPos.Add(centerTickPos);
+                    /*for (int i = 1; i <= rightCount; i++)
                     {
                         Vector3 tickPos = centerTickPos + Vector3.right * (tickInterval * i);
                         castTargetPos.Add(tickPos);
                         Vector3 leftTickPos = tickPos;
                         leftTickPos.x *= -1;
                         castTargetPos.Add(leftTickPos);
-                    }
+                    }*/
                     Vector3 farTickPos = centerTickPos + Vector3.right * farRight;
                     castTargetPos.Add(farTickPos);
                     Vector3 farLeftTickPos = farTickPos;
@@ -114,7 +133,7 @@ namespace Game
 
                 }
                 //add the rear most target pos
-                Vector3 rearTickPos = (Vector3.back * horizontalDistacneToRearBeamHitPoint);// + lightPostBasePos;
+                Vector3 rearTickPos = (Vector3.back * horizontalDistacneToRearBeamHitPoint);
                 castTargetPos.Add(rearTickPos);
 
                 foreach (var targetPos in castTargetPos)
@@ -126,7 +145,7 @@ namespace Game
                         Debug.DrawLine(lightPos, hit.point, Color.yellow);
                         if (hit.transform.gameObject.tag == "Player")
                         {
-                            pc.DetectedByGuard();
+                            //pc.DetectedByGuard();
                             return true;
                         }
                     }
