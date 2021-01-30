@@ -38,6 +38,8 @@ public class TerrainToolSet : MonoBehaviour
     public Transform levelStartPoint;
 
     public Vector3 spawnOffset = new Vector3(0.5f, 80f, 0.5f);
+    public Chunk firstChunk;
+
     public TerrainSetting GetTerrainSetting()
     {
 
@@ -73,8 +75,10 @@ public class TerrainToolSet : MonoBehaviour
     }
     internal void addChunkPos(Chunk newChunk)
     {
-        //   chunkCache.Add(newChunk);
-
+        if (firstChunk == null)
+        {
+            firstChunk = (newChunk);
+        }
         //  chunkParts.Add(new ChunkPart(newChunk));
     }
 }

@@ -122,7 +122,7 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
             Vector3Int chunkPosition = generateChunkQueue.Dequeue().chunkPosition;
 
             var c = GenerateChunk(chunkPosition);
-            //   terrainToolSet.addChunkPos(c);
+            terrainToolSet.addChunkPos(c);
             numChunks++;
         }
 
