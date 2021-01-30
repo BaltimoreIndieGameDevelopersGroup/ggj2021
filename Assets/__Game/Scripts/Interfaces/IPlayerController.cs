@@ -15,5 +15,7 @@
         /// Called when the player dies, such as blowing itself up with dynamite.
         /// </summary>
         void Die();
+
+        bool AllowMovement { get; set; }
     }
 }

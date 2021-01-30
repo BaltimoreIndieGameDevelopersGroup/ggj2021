@@ -6,7 +6,7 @@
 // https://wiki.unity3d.com/index.php/FPSWalkerEnhanced#FPSWalkerEnhanced.cs
  
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, Game.IPlayerController
 {
     [Tooltip("How fast the player moves when walking (default move speed).")]
     [SerializeField]
@@ -73,8 +73,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_ContactPoint;
     private bool m_PlayerControl = false;
     private int m_JumpTimer;
- 
- 
+
     private void Start()
     {
         // Saving component references to improve performance.
@@ -211,4 +210,26 @@ public class PlayerController : MonoBehaviour
     {
         print("Ouch! Fell " + fallDistance + " units!");
     }
+
+    private void Awake()
+    {
+        Game.ServiceLocator.Register<Game.IPlayerController>(this);
+    }
+
+    public void DetectedByGuard()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Die()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool AllowMovement
+    {
+        get { return enabled; }
+        set { enabled = value; }
+    }
+
 }
