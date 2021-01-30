@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{3cd81c46-f29d-4c8a-95ee-1c2c5a2b034b}">
+		<property name="name">
+			<value>Level Navigation</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3e7928be-7ee4-4019-a658-653f6996aa99}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{4ce95c55-567b-4ddb-915e-8b07eba0a6cc}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{4ce95c55-567b-4ddb-915e-8b07eba0a6cc}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Title Menu</value>
+			<value>Level Music</value>
+			<value>Win</value>
+			<value>Lose</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
