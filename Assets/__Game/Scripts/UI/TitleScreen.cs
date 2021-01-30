@@ -5,6 +5,12 @@
 
     public class TitleScreen : MonoBehaviour
     {
+        private void Awake()
+        {
+            var terrainGenerator = FindObjectOfType<TerrainGenerator>();
+            if (terrainGenerator != null) Destroy(terrainGenerator.gameObject);
+        }
+
         private void Update()
         {
             if (Input.anyKeyDown || Input.GetButtonDown("Fire1"))
