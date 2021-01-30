@@ -288,9 +288,10 @@ MonoBehaviour:
   m_Size: {x: 12, y: 0.29999998, z: 14}
   m_Min: {x: -6, y: -0.14999999, z: -7}
   m_Max: {x: 6, y: 0.14999999, z: 7}
-  numberOfBoxesPerRow: 20
-  yLevels: 10
-  yIncerment: 0.2
+  numberOfBoxesPerRow: 25
+  yLevels: 20
+  yincrement: 0.3
+  downFillLevelsY: 20
 --- !u!1001 &287471014430042346
 PrefabInstance:
   m_ObjectHideFlags: 0

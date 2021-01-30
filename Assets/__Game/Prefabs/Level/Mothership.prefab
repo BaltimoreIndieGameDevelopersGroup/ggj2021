@@ -157,9 +157,10 @@ MonoBehaviour:
   m_Size: {x: 12, y: 0.29999998, z: 14}
   m_Min: {x: -6, y: -0.14999999, z: -7}
   m_Max: {x: 6, y: 0.14999999, z: 7}
-  numberOfBoxesPerRow: 20
-  yLevels: 10
-  yIncerment: 0.1
+  numberOfBoxesPerRow: 25
+  yLevels: 20
+  yincrement: 0.3
+  downFillLevelsY: 20
 --- !u!135 &8409749530251376099
 SphereCollider:
   m_ObjectHideFlags: 0

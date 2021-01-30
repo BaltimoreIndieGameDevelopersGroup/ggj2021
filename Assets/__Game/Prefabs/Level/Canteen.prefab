@@ -274,9 +274,10 @@ MonoBehaviour:
   m_Size: {x: 9, y: 0.3, z: 9}
   m_Min: {x: -4.5, y: -0.15, z: -4.5}
   m_Max: {x: 4.5, y: 0.15, z: 4.5}
-  numberOfBoxesPerRow: 20
+  numberOfBoxesPerRow: 25
   yLevels: 20
-  yincrement: 0.2
+  yincrement: 0.3
+  downFillLevelsY: 20
 --- !u!1 &7759767011237860950
 GameObject:
   m_ObjectHideFlags: 0

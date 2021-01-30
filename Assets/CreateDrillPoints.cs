@@ -13,17 +13,20 @@ public class CreateDrillPoints : MonoBehaviour
     public int numberOfBoxesPerRow = 6;
     public int yLevels = 10;
     public float yincrement = 0.2f;
+    public int downFillLevelsY = 10;
     List<Vector3> listOfPoints;
 
     private void Start()
     {
         listOfPoints = new List<Vector3>();
         pointsAndCarve();
+        GetComponent<Collider>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     public void pointsAndCarve()
     {
-        int yIndex = 0;
+        int yIndex = -downFillLevelsY;
         while (yIndex < yLevels)
         {
             createPoints(yIndex * yincrement);
@@ -36,8 +39,16 @@ public class CreateDrillPoints : MonoBehaviour
                 {
 
                     print(voxel.data);
-                    TerrainGenerator.Instance.SetVoxel(point, Voxel.VoxelType.Air);
+                    if (yIndex < 1)
+                    {
 
+                        TerrainGenerator.Instance.SetVoxel(point, Voxel.VoxelType.Dirt);
+
+                    }
+                    else
+                    {
+                        TerrainGenerator.Instance.SetVoxel(point, Voxel.VoxelType.Air);
+                    }
                 }
             });
         }
