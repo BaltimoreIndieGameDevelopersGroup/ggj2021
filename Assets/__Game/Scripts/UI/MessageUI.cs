@@ -8,8 +8,12 @@
     {
         [SerializeField] private TextMeshProUGUI messageTextMesh;
         [SerializeField] private TextMeshProUGUI scoreTextMesh;
+        [SerializeField] private TextMeshProUGUI alien1TextMesh;
+        [SerializeField] private TextMeshProUGUI alien2TextMesh;
 
         private const float MessageDuration = 5;
+
+        private Coroutine banterCoroutine = null;
 
         private void OnEnable()
         {
@@ -50,9 +54,28 @@
             messageTextMesh.enabled = false;
         }
 
-        public void  SetScore(int score)
+        public void SetScore(int score)
         {
             scoreTextMesh.text = "Score: " + score;
+        }
+
+        public void PlayBanter(string[] lines)
+        {
+            if (banterCoroutine != null) StopCoroutine(banterCoroutine);
+            banterCoroutine = StartCoroutine(BanterCoroutine(lines));
+        }
+
+        private IEnumerator BanterCoroutine(string[] lines)
+        {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var textMesh = (i % 2 == 0) ? alien1TextMesh : alien2TextMesh;
+                textMesh.enabled = true;
+                textMesh.text = lines[i];
+                yield return new WaitForSeconds(2);
+                textMesh.enabled = false;
+            }
+            banterCoroutine = null;
         }
     }
 }
