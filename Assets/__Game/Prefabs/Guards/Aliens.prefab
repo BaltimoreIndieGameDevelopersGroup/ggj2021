@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4323135973201386410}
   - component: {fileID: 1566951804341139245}
-  - component: {fileID: 3480083999729541483}
   - component: {fileID: 5149327708346788246}
   m_Layer: 0
   m_Name: Aliens
@@ -84,18 +83,6 @@ MonoBehaviour:
   maxMoveForce: 400
   averageMoveTimeInterval: 4
   timeIntervalVariance: 1
---- !u!114 &3480083999729541483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4266006371704085392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8b97cb172c773e4e8e3e298a0af6d49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &5149327708346788246
 Rigidbody:
   m_ObjectHideFlags: 0
