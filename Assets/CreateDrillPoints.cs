@@ -18,6 +18,7 @@ public class CreateDrillPoints : MonoBehaviour
 
     private void Start()
     {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0) return;
         listOfPoints = new List<Vector3>();
         pointsAndCarve();
         GetComponent<Collider>().enabled = false;

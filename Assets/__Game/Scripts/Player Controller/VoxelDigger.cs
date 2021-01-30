@@ -62,18 +62,29 @@
         /// </summary>
         private void CheckOverhead()
         {
-            var worldPosition = transform.position + 2.5f * Vector3.up;
+            var isCovered = false;
             Voxel voxel;
-            if (TerrainGenerator.Instance.GetVoxel(worldPosition, out voxel))
+            if (TerrainGenerator.Instance.GetVoxel(transform.position + 1.5f * Vector3.up, out voxel))
             {
-                if (voxel.data == Voxel.VoxelType.Air)
+                if (voxel.data != Voxel.VoxelType.Air)
                 {
-                    ServiceLocator.Get<IAudioManager>().PlayDangerMusic();
+                    isCovered = true;
                 }
-                else
+            }
+            else if (TerrainGenerator.Instance.GetVoxel(transform.position + 2.5f * Vector3.up, out voxel))
+            {
+                if (voxel.data != Voxel.VoxelType.Air)
                 {
-                    ServiceLocator.Get<IAudioManager>().PlaySafeMusic();
+                    isCovered = true;
                 }
+            }
+            if (isCovered)
+            {
+                ServiceLocator.Get<IAudioManager>().PlaySafeMusic();
+            }
+            else
+            {
+                ServiceLocator.Get<IAudioManager>().PlayDangerMusic();
             }
         }
 
