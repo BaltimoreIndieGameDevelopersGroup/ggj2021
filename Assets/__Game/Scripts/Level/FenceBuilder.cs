@@ -36,7 +36,7 @@
             }
 
             // Build fence in left and right x, with gap in center of right x:
-            for (int z = 0; z < size.z; z++)
+            for (int z = 0; z <= size.z; z++)
             {
                 if (z % 2 == 0)
                 {
@@ -52,7 +52,7 @@
             Instantiate(exit, new Vector3(size.x - unitsOutsideFence + 0.75f, 0, size.z / 2), Quaternion.identity);
 
             // Place aliens at corners:
-            //Instantiate(aliensPrefab, new Vector3(3, ))
+            Instantiate(aliensPrefab, new Vector3(3, 100, size.z - 4), Quaternion.Euler(0, 135, 0));
         }
     }
 }
