@@ -38,6 +38,7 @@ public class TerrainToolSet : MonoBehaviour
 
     public Vector3 spawnOffset = new Vector3(0.5f, 80f, 0.5f);
     public Chunk firstChunk;
+    public GameObject basicTestObject;
 
     public TerrainSetting GetTerrainSetting()
     {
@@ -56,12 +57,17 @@ public class TerrainToolSet : MonoBehaviour
     {
 
         await Task.Delay(TimeSpan.FromSeconds(5));
-        chunkParts.ForEach(part =>
-       {
-           part.runIt();
-       });
-    }
+        int x = UnityEngine.Random.Range(0, currentTerrainSetting.chunkSize.x);
+        int z = UnityEngine.Random.Range(0, currentTerrainSetting.chunkSize.z);
 
+        placeObject(new Vector3(x, 0, z));
+    }
+    public void placeObject(Vector3 spawnSpace)
+    {
+        Vector3 calcLocation = spawnOffset + spawnSpace;
+        Instantiate(basicTestObject, calcLocation, new Quaternion());
+
+    }
     internal void addChunkPos(Chunk newChunk)
     {
         if (firstChunk == null)
