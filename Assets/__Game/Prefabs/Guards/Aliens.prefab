@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4323135973201386410}
   - component: {fileID: 1566951804341139245}
   - component: {fileID: 5149327708346788246}
+  - component: {fileID: 1023552480478420347}
   m_Layer: 0
   m_Name: Aliens
   m_TagString: Untagged
@@ -80,9 +81,9 @@ MonoBehaviour:
     - For what?
     - "Says prisoners keep escaping\u2026?"
     - Escaping, here?
-  maxMoveForce: 400
-  averageMoveTimeInterval: 4
-  timeIntervalVariance: 1
+  maxMoveForce: 500
+  averageMoveTimeInterval: 5
+  timeIntervalVariance: 2
 --- !u!54 &5149327708346788246
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99,6 +100,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1023552480478420347
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4266006371704085392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 8
+  m_Height: 25
+  m_Direction: 1
+  m_Center: {x: 0, y: -10, z: 0}
 --- !u!1001 &2091018782649984274
 PrefabInstance:
   m_ObjectHideFlags: 0
