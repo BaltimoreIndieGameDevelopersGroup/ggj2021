@@ -8,6 +8,7 @@
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour, Game.IPlayerController
 {
+    [SerializeField] private GameObject loseScreen;
     [SerializeField] private FMODUnity.StudioEventEmitter footstepsEmitter;
     private float timeSinceLastFootstep = 0;
     private const float WalkingFootstepFrequency = 0.25f;
@@ -236,12 +237,21 @@ public class PlayerController : MonoBehaviour, Game.IPlayerController
 
     public void DetectedByGuard()
     {
-        throw new System.NotImplementedException();
+        Lose();
     }
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        Lose();
+    }
+
+    private void Lose()
+    {
+        if (AllowMovement)
+        {
+            AllowMovement = false;
+            Instantiate(loseScreen);
+        }
     }
 
     public bool AllowMovement

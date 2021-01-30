@@ -431,6 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f07c9b326c9d34f88cc244295f4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loseScreen: {fileID: 761645692050317043, guid: e9e12b3ae222b7d409af6806c9ea9110,
+    type: 3}
   footstepsEmitter: {fileID: 490836729314818823}
   m_WalkSpeed: 6
   m_RunSpeed: 11
