@@ -14,7 +14,10 @@ public class Chunk : MonoBehaviour
     TerrainGenerator generator;
     Vector3Int chunkPosition;
     Vector3Int chunkSize;
-    
+
+    public Vector3Int ChunkPosition { get { return chunkPosition; } }
+    public Vector3Int ChunkSize { get { return chunkSize; } }
+
     bool initialized;
     bool dirty;
     bool argent;
