@@ -121,7 +121,8 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
 
             Vector3Int chunkPosition = generateChunkQueue.Dequeue().chunkPosition;
 
-            GenerateChunk(chunkPosition);
+            var c = GenerateChunk(chunkPosition);
+            terrainToolSet.addChunkPos(c);
             numChunks++;
         }
 
@@ -161,8 +162,9 @@ public class TerrainGenerator : Singleton<TerrainGenerator>
             }
             return true;
         };
-        terrainToolSet.addChunkPos(newChunk);
         chunks.Add(chunkPosition, newChunk);
+
+
         return newChunk;
     }
 

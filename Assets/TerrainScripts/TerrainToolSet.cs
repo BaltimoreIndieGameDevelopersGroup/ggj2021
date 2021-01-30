@@ -4,18 +4,37 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.Threading.Tasks;
+using static OptIn.Voxel.Voxel;
 
+[Serializable]
+public class ChunkPart
+{
+    private Chunk newChunk;
+    public List<Vector3Int> positionList;
 
+    public ChunkPart(Chunk newChunk)
+    {
+        this.newChunk = newChunk;
+    }
+    public void runIt()
+    {
+
+        // newChunk.
+        positionList = newChunk.Voxels.ToList().Where(v => v.data == VoxelType.Grass).Select(v => v.position).ToList();
+
+    }
+}
 public class TerrainToolSet : MonoBehaviour
 {
 
     public List<TerrainSetting> terrainSettings;
     public List<Vector3Int> chunkPos;
     public SizeSetting currentSize;
-    public List<Chunk> chunkCache;
+    //    public List<Chunk> chunkCache;
 
+    public List<ChunkPart> chunkParts;
 
-
+    public TerrainSetting currentTerrainSetting;
 
     public TerrainSetting GetTerrainSetting()
     {
@@ -24,20 +43,26 @@ public class TerrainToolSet : MonoBehaviour
         if (currentSize == SizeSetting.Random)
         {
 
-            return terrainSettings.Random();
+            currentTerrainSetting = terrainSettings.Random();
+            return currentTerrainSetting;
         }
-        return terrainSettings.Where(t => t.Size == currentSize).ToList().Random();
-
+        currentTerrainSetting = terrainSettings.Where(t => t.Size == currentSize).ToList().Random();
+        return currentTerrainSetting;
     }
-
-    internal void addChunkPos(Vector3Int chunkPosition)
+    async void Start()
     {
-        chunkPos.Add(chunkPosition);
+
+        await Task.Delay(TimeSpan.FromSeconds(5));
+        chunkParts.ForEach(part =>
+       {
+           part.runIt();
+       });
     }
 
     internal void addChunkPos(Chunk newChunk)
     {
-        chunkCache.Add(newChunk);
-        newChunk.Voxels.ToList().ForEach(v => print(v.position));
+        //   chunkCache.Add(newChunk);
+
+        chunkParts.Add(new ChunkPart(newChunk));
     }
 }
