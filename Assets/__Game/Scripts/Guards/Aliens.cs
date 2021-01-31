@@ -1,8 +1,6 @@
 ﻿namespace Game
 {
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
     using Random = UnityEngine.Random;
@@ -11,8 +9,12 @@
     public class Banter
     {
         [SerializeField] private string[] lines;
+        [SerializeField] private float[] timing;
+        [SerializeField] private FMODUnity.StudioEventEmitter soundEmitter;
 
         public string[] Lines { get { return lines; } }
+        public float[] Timing { get { return timing; } }
+        public FMODUnity.StudioEventEmitter SoundEmitter { get { return soundEmitter; } }
     }
 
     public class Aliens : MonoBehaviour
@@ -38,6 +40,7 @@
         DevSpotLightControl[] spotlightcontrol;
         Quaternion[] spotlightTargetRot;
         float lightMoveSpan;
+
         void Start()
         {
             rb = GetComponent<Rigidbody>();
@@ -137,7 +140,7 @@
         {
             if (other.CompareTag("Player"))
             {
-                ServiceLocator.Get<IMessageUI>().PlayBanter(banter[UnityEngine.Random.Range(0, banter.Length)].Lines);
+                ServiceLocator.Get<IMessageUI>().PlayBanter(banter[UnityEngine.Random.Range(0, banter.Length)]);
             }
         }
     }

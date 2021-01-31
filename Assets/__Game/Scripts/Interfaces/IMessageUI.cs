@@ -6,6 +6,8 @@
 
         void SetScore(int score);
 
-        void PlayBanter(string[] lines);
+        void PlayBanter(Banter banter);
+
+        void StopBanter();
     }
 }

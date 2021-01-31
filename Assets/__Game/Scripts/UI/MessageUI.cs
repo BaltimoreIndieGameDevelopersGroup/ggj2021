@@ -14,6 +14,7 @@
         private const float MessageDuration = 5;
 
         private Coroutine banterCoroutine = null;
+        private FMODUnity.StudioEventEmitter currentBanterSoundEmitter = null;
 
         private void OnEnable()
         {
@@ -59,23 +60,44 @@
             scoreTextMesh.text = "Score: " + score;
         }
 
-        public void PlayBanter(string[] lines)
+        public void PlayBanter(Banter banter)
         {
-            if (banterCoroutine != null) StopCoroutine(banterCoroutine);
-            banterCoroutine = StartCoroutine(BanterCoroutine(lines));
+            StopBanter();
+            banterCoroutine = StartCoroutine(BanterCoroutine(banter));
         }
 
-        private IEnumerator BanterCoroutine(string[] lines)
+        private IEnumerator BanterCoroutine(Banter banter)
         {
-            for (int i = 0; i < lines.Length; i++)
+            if (banter.SoundEmitter != null)
+            {
+                banter.SoundEmitter.Play();
+                currentBanterSoundEmitter = banter.SoundEmitter;
+            }
+
+            for (int i = 0; i < banter.Lines.Length; i++)
             {
                 var textMesh = (i % 2 == 0) ? alien1TextMesh : alien2TextMesh;
                 textMesh.enabled = true;
-                textMesh.text = lines[i];
+                textMesh.text = banter.Lines[i];
                 yield return new WaitForSeconds(2);
                 textMesh.enabled = false;
             }
             banterCoroutine = null;
+            currentBanterSoundEmitter = null;
+        }
+
+        public void StopBanter()
+        {
+            if (banterCoroutine != null)
+            {
+                StopCoroutine(banterCoroutine);
+                if (currentBanterSoundEmitter != null)
+                {
+                    currentBanterSoundEmitter.Stop();
+                    currentBanterSoundEmitter = null;
+                }
+                banterCoroutine = null;
+            }
         }
     }
 }
