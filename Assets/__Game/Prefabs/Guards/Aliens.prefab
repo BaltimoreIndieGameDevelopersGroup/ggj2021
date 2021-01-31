@@ -425,7 +425,7 @@ MonoBehaviour:
       left the coffee pot on.
     - "Oh, thanks\u2026 I hope this works\u2026"
     timing:
-    - 0
+    - 12
     - 0
     soundEmitter: {fileID: 775269700900537379}
   - lines:
@@ -443,7 +443,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    - 0
+    - 9
     - 0
     soundEmitter: {fileID: 3958684081007477072}
   - lines:
