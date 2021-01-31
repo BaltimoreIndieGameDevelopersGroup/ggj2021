@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: prison
+  companyName: Team Cellar
+  productName: Escape from the Little Green Men
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -581,7 +581,8 @@ PlayerSettings:
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 1
-  additionalIl2CppArgs: 
+  additionalIl2CppArgs: --additional-cpp="D:/Documents/Unity Projects/Small Projects/BIG/ggj2021/Assets/../Temp/fmod_register_static_plugins.cpp"
+    --additional-cpp="D:/Documents/Unity Projects/Small Projects/BIG/ggj2021/Assets/Plugins/FMOD/src/Runtime/fmod_static_plugin_support.h"
   scriptingRuntimeVersion: 1
   gcIncremental: 0
   assemblyVersionValidation: 1

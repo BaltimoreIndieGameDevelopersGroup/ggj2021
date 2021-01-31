@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 
 // FPSWalkerEnhanced
-// From Unify Community Wiki
+// From Unify Community Wiki - modified
 
 // https://wiki.unity3d.com/index.php/FPSWalkerEnhanced#FPSWalkerEnhanced.cs
  
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour, Game.IPlayerController
 {
+    [SerializeField] private GameObject loseScreen;
+    [SerializeField] private FMODUnity.StudioEventEmitter footstepsEmitter;
+    private float timeSinceLastFootstep = 0;
+    private const float WalkingFootstepFrequency = 0.25f;
+
+    [Space]
+
     [Tooltip("How fast the player moves when walking (default move speed).")]
     [SerializeField]
     private float m_WalkSpeed = 6.0f;
@@ -194,6 +201,18 @@ public class PlayerController : MonoBehaviour, Game.IPlayerController
  
         // Move the controller, and set grounded true or false depending on whether we're standing on something
         m_Grounded = (m_Controller.Move(m_MoveDirection * Time.deltaTime) & CollisionFlags.Below) != 0;
+
+        // Footstep sound:
+        timeSinceLastFootstep += Time.deltaTime;
+        if (m_Grounded && (Mathf.Abs(inputX) > 0.05f || Mathf.Abs(inputY) > 0.05f))
+        {
+            var footstepFrequency = (m_Speed > m_WalkSpeed) ? ((m_WalkSpeed / m_Speed) * WalkingFootstepFrequency) : WalkingFootstepFrequency;
+            if (timeSinceLastFootstep > footstepFrequency)
+            {
+                timeSinceLastFootstep = 0;
+                footstepsEmitter.Play();
+            }
+        }
     }
  
  
@@ -218,12 +237,21 @@ public class PlayerController : MonoBehaviour, Game.IPlayerController
 
     public void DetectedByGuard()
     {
-        throw new System.NotImplementedException();
+        Lose();
     }
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        Lose();
+    }
+
+    private void Lose()
+    {
+        if (AllowMovement)
+        {
+            AllowMovement = false;
+            Instantiate(loseScreen);
+        }
     }
 
     public bool AllowMovement

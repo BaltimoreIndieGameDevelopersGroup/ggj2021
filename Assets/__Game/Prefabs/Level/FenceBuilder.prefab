@@ -46,3 +46,5 @@ MonoBehaviour:
   fencePrefab: {fileID: 7573133579406098837, guid: 9af861d1dbd14794bb19add7baeb7e1d,
     type: 3}
   exit: {fileID: 4109087222701467289, guid: 4050a3a85fe303b4b9fec8bf72f0cd2c, type: 3}
+  aliensPrefab: {fileID: 4266006371704085392, guid: 65b77567d85a9fe468ef0653306cc383,
+    type: 3}

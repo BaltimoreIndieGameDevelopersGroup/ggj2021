@@ -702,6 +702,21 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 386422103}
+    - target: {fileID: 8976701138479527995, guid: bf14b286ae7246148aedaf704eff9a5f,
+        type: 3}
+      propertyPath: xSpawnLimit
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976701138479527995, guid: bf14b286ae7246148aedaf704eff9a5f,
+        type: 3}
+      propertyPath: zSpawnLimit
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976701138479527995, guid: bf14b286ae7246148aedaf704eff9a5f,
+        type: 3}
+      propertyPath: minBuildingSeperation
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 8976701138479527996, guid: bf14b286ae7246148aedaf704eff9a5f,
         type: 3}
       propertyPath: m_Name

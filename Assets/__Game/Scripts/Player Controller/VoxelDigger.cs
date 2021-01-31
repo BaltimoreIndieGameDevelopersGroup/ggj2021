@@ -11,10 +11,12 @@
         [SerializeField] private Item item;
         [SerializeField] private bool penetratesRock;
         [SerializeField] private float digDuration = 1;
+        [SerializeField] private FMODUnity.StudioEventEmitter fmodEventEmitter;
 
         public Item Item { get { return item; } }
         public bool PenetratesRock { get { return penetratesRock; } }
         public float DigDuration { get { return digDuration; } }
+        public FMODUnity.StudioEventEmitter FMODEventEmitter { get { return fmodEventEmitter; } }
     }
 
     public class VoxelDigger : MonoBehaviour
@@ -60,18 +62,29 @@
         /// </summary>
         private void CheckOverhead()
         {
-            var worldPosition = transform.position + 1.5f * Vector3.up;
+            var isCovered = false;
             Voxel voxel;
-            if (TerrainGenerator.Instance.GetVoxel(worldPosition, out voxel))
+            if (TerrainGenerator.Instance.GetVoxel(transform.position + 1.5f * Vector3.up, out voxel))
             {
-                if (voxel.data == Voxel.VoxelType.Air)
+                if (voxel.data != Voxel.VoxelType.Air)
                 {
-                    ServiceLocator.Get<IAudioManager>().PlayDangerMusic();
+                    isCovered = true;
                 }
-                else
+            }
+            else if (TerrainGenerator.Instance.GetVoxel(transform.position + 2.5f * Vector3.up, out voxel))
+            {
+                if (voxel.data != Voxel.VoxelType.Air)
                 {
-                    ServiceLocator.Get<IAudioManager>().PlaySafeMusic();
+                    isCovered = true;
                 }
+            }
+            if (isCovered)
+            {
+                ServiceLocator.Get<IAudioManager>().PlaySafeMusic();
+            }
+            else
+            {
+                ServiceLocator.Get<IAudioManager>().PlayDangerMusic();
             }
         }
 
@@ -113,7 +126,7 @@
 
             isDigging = true;
 
-            //[TODO] digSoundEmitter.Play();
+            tool.FMODEventEmitter.Play();
 
             if (dirtParticles != null)
             {

@@ -48,9 +48,9 @@ MonoBehaviour:
   terrainToolSet: {fileID: 0}
   terrainSetting:
     Size: 0
-    chunkSize: {x: 32, y: 32, z: 32}
+    chunkSize: {x: 63, y: 32, z: 63}
     chunkSpawnSize: {x: 3, y: 3}
-  chunkSize: {x: 32, y: 128, z: 32}
+  chunkSize: {x: 63, y: 128, z: 63}
   chunkSpawnSize: {x: 1, y: 1}
   chunkMaterial: {fileID: 2100000, guid: 0fbb6114864c2014b87fc493434a98af, type: 2}
   maxGenerateChunksInFrame: 3
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainSettings:
   - Size: 0
-    chunkSize: {x: 32, y: 128, z: 32}
+    chunkSize: {x: 64, y: 128, z: 64}
     chunkSpawnSize: {x: 1, y: 1}
   - Size: 1
     chunkSize: {x: 64, y: 128, z: 32}
@@ -85,7 +85,7 @@ MonoBehaviour:
     chunkSize: {x: 512, y: 128, z: 64}
     chunkSpawnSize: {x: 1, y: 1}
   - Size: 0
-    chunkSize: {x: 32, y: 128, z: 32}
+    chunkSize: {x: 64, y: 128, z: 64}
     chunkSpawnSize: {x: 1, y: 1}
   chunkPos: []
   currentSize: 0
@@ -96,5 +96,11 @@ MonoBehaviour:
     chunkSpawnSize: {x: 3, y: 3}
   spawnOffset: {x: 0.5, y: 80, z: 0.5}
   firstChunk: {fileID: 0}
-  basicTestObject: {fileID: 1602702143318650511, guid: 2c239790f51eb4648a3bf60131464f39,
-    type: 3}
+  gameBuildings:
+  - {fileID: 140591697129732686, guid: 61c3176ba7058b84bb7ca381b9ba16b2, type: 3}
+  - {fileID: 1602702143318650511, guid: 2c239790f51eb4648a3bf60131464f39, type: 3}
+  - {fileID: 1602702143318650511, guid: a8f30a4809971e9439723d1c17179b68, type: 3}
+  - {fileID: 1602702143318650511, guid: f09cf3bab97ed8947992907b3448ea43, type: 3}
+  - {fileID: 1602702143318650511, guid: b282cfee171216945a1cac40a923e055, type: 3}
+  xSpawnLimit: 2
+  zSpawnLimit: 2

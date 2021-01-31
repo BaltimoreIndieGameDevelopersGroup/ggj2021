@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using System.Threading.Tasks;
 using static OptIn.Voxel.Voxel;
+using OptIn.Voxel;
 
 [Serializable]
 public class ChunkPart
@@ -38,8 +39,12 @@ public class TerrainToolSet : MonoBehaviour
 
     public Vector3 spawnOffset = new Vector3(0.5f, 80f, 0.5f);
     public Chunk firstChunk;
-    public GameObject basicTestObject;
+    public List<GameObject> gameBuildings;
+    public List<GameObject> spawnedObjects;
 
+    public int xSpawnLimit = 2;
+    public int zSpawnLimit = 2;
+    public float minBuildingSeperation = 5;
     public TerrainSetting GetTerrainSetting()
     {
 
@@ -57,16 +62,69 @@ public class TerrainToolSet : MonoBehaviour
     {
 
         await Task.Delay(TimeSpan.FromSeconds(5));
-        int x = UnityEngine.Random.Range(0, currentTerrainSetting.chunkSize.x);
-        int z = UnityEngine.Random.Range(0, currentTerrainSetting.chunkSize.z);
 
-        placeObject(new Vector3(x, 0, z));
+
+        placeObject();
     }
-    public void placeObject(Vector3 spawnSpace)
-    {
-        Vector3 calcLocation = spawnOffset + spawnSpace;
-        Instantiate(basicTestObject, calcLocation, new Quaternion());
+    public void placeObject()
 
+    {
+
+
+
+        gameBuildings.ForEach(building =>
+        {
+            Vector3 calcLocation = getGoodLocation();
+
+            spawnedObjects.Add(Instantiate(building, calcLocation, new Quaternion()));
+        });
+    }
+
+    private Vector3 getGoodLocation()
+    {
+        int x = UnityEngine.Random.Range(xSpawnLimit, currentTerrainSetting.chunkSize.x - xSpawnLimit);
+        int z = UnityEngine.Random.Range(zSpawnLimit, currentTerrainSetting.chunkSize.z - zSpawnLimit);
+        Vector3 calcLocation = spawnOffset + new Vector3(x, 0, z);
+
+        if (spawnedObjects.Count == 0)
+        {
+
+            return calcLocation;
+        }
+        float distOfCloset = spawnedObjects.Min(spawnedOb =>
+        {
+
+            Vector3 offset = calcLocation - spawnedOb.transform.position;
+            float sqrLen = offset.sqrMagnitude;
+            // Debug.Log(sqrLen);
+            return sqrLen;
+
+
+        });
+
+        if (distOfCloset < minBuildingSeperation)
+        {
+            return getGoodLocation();
+        }
+
+
+
+        return calcLocation;
+    }
+
+    void setVoxel()
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, 1 << LayerMask.NameToLayer("Voxel")))
+        {
+            var worldPosition = hit.point + ray.direction * 0.01f;
+            Voxel voxel;
+            if (TerrainGenerator.Instance.GetVoxel(worldPosition, out voxel))
+            {
+            }
+
+        }
     }
     internal void addChunkPos(Chunk newChunk)
     {
