@@ -336,14 +336,20 @@ MonoBehaviour:
   - lines:
     - "They don\u2019t pay us enough for this."
     - Maybe we should unionize.
-    timing: []
+    timing:
+    - 0
+    - 0
     soundEmitter: {fileID: 3507828576131084640}
   - lines:
     - How are the wife and kids?
     - Well, you know.
     - And the miss?
     - "She\u2019s great!"
-    timing: []
+    timing:
+    - 0
+    - 0
+    - 0
+    - 0
     soundEmitter: {fileID: 1915315063606499807}
   - lines:
     - Some weather.
@@ -352,26 +358,42 @@ MonoBehaviour:
     - Sure.
     - Got a light?
     - Why do I get stuck with you, every time.
-    timing: []
+    timing:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     soundEmitter: {fileID: 4395085479640895534}
   - lines:
     - "There\u2019s just too many vowels."
     - "It\u2019s annoying isn\u2019t it?"
     - Such a clunky language.
     - "Boss said we\u2019ve got to learn it. "
-    timing: []
+    timing:
+    - 0
+    - 0
+    - 0
+    - 0
     soundEmitter: {fileID: 1124640994424477911}
   - lines:
     - We playing cards tonight?
     - Not with the deck you made us use last night.
     - "Saying I\u2019m cheating?"
     - "I\u2019m saying I don\u2019t like your deck."
-    timing: []
+    timing:
+    - 0
+    - 0
+    - 0
+    - 0
     soundEmitter: {fileID: 930099829985147952}
   - lines:
     - You hear that?
     - Probably those racoons again.
-    timing: []
+    timing:
+    - 0
+    - 0
     soundEmitter: {fileID: 8402249485685896224}
   - lines:
     - Captain keeps yelling at me.
@@ -383,13 +405,18 @@ MonoBehaviour:
   - lines:
     - "Doesn\u2019t tonight seem a little eerie?"
     - "Yeah, like we\u2019ve been here before?"
-    timing: []
+    timing:
+    - 0
+    - 0
     soundEmitter: {fileID: 62654085600936209}
   - lines:
     - OK. So Captain yelled at me AGAIN.
     - "What, you\u2019re kidding?"
     - Yeah, prisoners are escaping again, it's only happening on our shift.
-    timing: []
+    timing:
+    - 0
+    - 0
+    - 0
     soundEmitter: {fileID: 3458705396915089931}
   - lines:
     - Alright, I went around the entire perimeter on both the interior and exterior,
@@ -397,7 +424,9 @@ MonoBehaviour:
       every room and under every bed and in every closet I could find. Also, you
       left the coffee pot on.
     - "Oh, thanks\u2026 I hope this works\u2026"
-    timing: []
+    timing:
+    - 0
+    - 0
     soundEmitter: {fileID: 775269700900537379}
   - lines:
     - "So I talked to the captain, he said a memo went out\u2026"
@@ -409,12 +438,20 @@ MonoBehaviour:
       balked at for not getting a memo."
     - "I don\u2019t know, this is starting to get strange. Like we both didn\u2019t
       get the memo? Is that intentional? "
-    timing: []
+    timing:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     soundEmitter: {fileID: 3958684081007477072}
   - lines:
     - 'Remember how you said the other night felt eerily similar? '
     - "Stop mate, you\u2019re freaking me out!"
-    timing: []
+    timing:
+    - 0
+    - 0
     soundEmitter: {fileID: 8329513867082427536}
   - lines:
     - "So I\u2019ve been thinking, what if, what if \u2026. the prisoners are digging
@@ -430,7 +467,17 @@ MonoBehaviour:
       crawling beneath our feet?"
     - "If that\u2019s what it takes-- yes!"
     - Why am I always stuck with you?!
-    timing: []
+    timing:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     soundEmitter: {fileID: 1249811737553597157}
   - lines:
     - Hey.
@@ -444,13 +491,24 @@ MonoBehaviour:
       has to be another answer."
     - Going airborne?
     - "Now we\u2019re onto something. "
-    timing: []
+    timing:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     soundEmitter: {fileID: 7099958479744458052}
   - lines:
     - The same night, it feels like the same night every night.
     - I never did like the night shifts. Have I ever told you I was afraid of the
       dark as a kid?
-    timing: []
+    timing:
+    - 0
+    - 0
     soundEmitter: {fileID: 5951457916792637571}
   aliens:
   - {fileID: 1443225803902456653}

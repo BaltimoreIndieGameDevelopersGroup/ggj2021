@@ -79,7 +79,8 @@
                 var textMesh = (i % 2 == 0) ? alien1TextMesh : alien2TextMesh;
                 textMesh.enabled = true;
                 textMesh.text = banter.Lines[i];
-                yield return new WaitForSeconds(2);
+                var timing = (i < banter.Timing.Length && banter.Timing[i] > 0) ? banter.Timing[i] : 2;
+                yield return new WaitForSeconds(timing);
                 textMesh.enabled = false;
             }
             banterCoroutine = null;
