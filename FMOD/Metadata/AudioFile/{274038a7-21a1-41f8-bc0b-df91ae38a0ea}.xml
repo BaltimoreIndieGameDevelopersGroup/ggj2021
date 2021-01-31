@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{274038a7-21a1-41f8-bc0b-df91ae38a0ea}">
+		<property name="assetPath">
+			<value>Ice_impact_lite_02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.224</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3eed5a23-689e-4404-9a41-a0c31e5a84f9}</destination>
+		</relationship>
+	</object>
+</objects>

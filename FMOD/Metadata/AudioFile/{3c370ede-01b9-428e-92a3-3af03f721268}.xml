@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{3c370ede-01b9-428e-92a3-3af03f721268}">
+		<property name="assetPath">
+			<value>D- Win v2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.2857500000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3eed5a23-689e-4404-9a41-a0c31e5a84f9}</destination>
+		</relationship>
+	</object>
+</objects>

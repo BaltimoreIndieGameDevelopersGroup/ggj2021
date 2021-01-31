@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{a5df446b-952a-47eb-98e8-fa312be3a6e3}">
+		<property name="assetPath">
+			<value>BLADE_HEAVY_MOVING_IMPACT_RING02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.92333333333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3eed5a23-689e-4404-9a41-a0c31e5a84f9}</destination>
+		</relationship>
+	</object>
+</objects>
