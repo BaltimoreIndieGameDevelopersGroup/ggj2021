@@ -41,7 +41,13 @@
 
         private void SetMusicForCurrentScene()
         { 
-            musicEmitter.SetParameter("Intensity Level", SceneManager.GetActiveScene().buildIndex);
+            musicEmitter.SetParameter("Level Navigation", SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void PlayMusicLevel(int level)
+        {
+            musicEmitter.SetParameter("Level Navigation", level);
+            musicEmitter.SetParameter("Intensity Level", 0);
         }
 
         public void PlayDangerMusic()

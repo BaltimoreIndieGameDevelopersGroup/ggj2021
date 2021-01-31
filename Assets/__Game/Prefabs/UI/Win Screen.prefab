@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1843344576658886631}
   - component: {fileID: 1534384551042960336}
   - component: {fileID: 2299133963066295365}
-  - component: {fileID: 4308009574095347328}
+  - component: {fileID: 1357523820744026099}
   m_Layer: 5
   m_Name: Win Screen
   m_TagString: Untagged
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4308009574095347328
+--- !u!114 &1357523820744026099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,9 +110,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 761645692050317043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd5e3c0a54182c8498e46a7f5a11dc9f, type: 3}
+  m_Script: {fileID: 11500000, guid: ae643f7518caa8d498822694eec8537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicLevel: 2
 --- !u!1 &1870888355064420021
 GameObject:
   m_ObjectHideFlags: 0

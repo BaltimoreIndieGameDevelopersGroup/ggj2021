@@ -4,6 +4,7 @@
     {
         void PlayDangerMusic();
         void PlaySafeMusic();
+        void PlayMusicLevel(int level);
     }
 }
 

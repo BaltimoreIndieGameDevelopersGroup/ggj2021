@@ -7,8 +7,11 @@
 
     public class EndGameScreen : MonoBehaviour
     {
+        [SerializeField] private int musicLevel;
+
         private IEnumerator Start()
         {
+            ServiceLocator.Get<IAudioManager>().PlayMusicLevel(musicLevel);
             GetComponent<Canvas>().enabled = true;
             var textMesh = GetComponentInChildren<TextMeshProUGUI>();
             const float ScrollDuration = 4f;
