@@ -81,6 +81,62 @@ MonoBehaviour:
     - For what?
     - "Says prisoners keep escaping\u2026?"
     - Escaping, here?
+  - lines:
+    - "Doesn\u2019t tonight seem a little eerie?"
+    - "Yeah, like we\u2019ve been here before?"
+  - lines:
+    - OK. So Captain yelled at me AGAIN.
+    - "What, you\u2019re kidding?"
+    - Yeah, prisoners are escaping again, it's only happening on our shift.
+  - lines:
+    - Alright, I went around the entire perimeter on both the interior and exterior,
+      climbed on top of the buildings one by one and then entered them. I checked
+      every room and under every bed and in every closet I could find. Also, you
+      left the coffee pot on.
+    - "Oh, thanks\u2026 I hope this works\u2026"
+  - lines:
+    - "So I talked to the captain, he said a memo went out\u2026"
+    - A memo?
+    - "That\u2019s what I said\u2026"
+    - Uh-oh
+    - "Yeah, he flipped. I swear, where are these guys escaping from? We\u2019re
+      just standing here talking. Nothing ever happens and then I\u2019m getting
+      balked at for not getting a memo."
+    - "I don\u2019t know, this is starting to get strange. Like we both didn\u2019t
+      get the memo? Is that intentional? "
+  - lines:
+    - 'Remember how you said the other night felt eerily similar? '
+    - "Stop mate, you\u2019re freaking me out!"
+  - lines:
+    - "So I\u2019ve been thinking, what if, what if \u2026. the prisoners are digging
+      their way out?"
+    - "Stop. That\u2019s impossible."
+    - No, no, wait. Think about it. Ground is really soft, we got a couple pick axes
+      around.
+    - This is a waste of our time.
+    - You NEVER go with my ideas.
+    - "That\u2019s not true."
+    - Is so.
+    - "What do you want me to do? Walk around with a metal detector, see if they\u2019re
+      crawling beneath our feet?"
+    - "If that\u2019s what it takes-- yes!"
+    - Why am I always stuck with you?!
+  - lines:
+    - Hey.
+    - Hey.
+    - I brought you a sandwich.
+    - Thanks, man.
+    - "Hey, I\u2019m real sorry about last night."
+    - "No, I get it. It\u2019s the stress\u2026 I\u2019m sorry too. Maybe we should
+      try the metal detector thing?"
+    - "I mean, nah\u2026 what are the chances they are just digging anyway. There
+      has to be another answer."
+    - Going airborne?
+    - "Now we\u2019re onto something. "
+  - lines:
+    - The same night, it feels like the same night every night.
+    - I never did like the night shifts. Have I ever told you I was afraid of the
+      dark as a kid?
   aliens:
   - {fileID: 1443225803902456653}
   - {fileID: 3528718874500236562}
