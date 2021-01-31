@@ -21,6 +21,8 @@
 
         Rigidbody rb;
 
+        [SerializeField] private Transform[] aliens;
+
         public float maxMoveForce;
         public float averageMoveTimeInterval;
         public float timeIntervalVariance;
@@ -33,16 +35,20 @@
         Vector3 tempPosition;
         Vector3 sceneCenter;
 
-        DevSpotLightControl spotlightcontrol;
-        Quaternion spotlightTargetRot;
+        DevSpotLightControl[] spotlightcontrol;
+        Quaternion[] spotlightTargetRot;
         float lightMoveSpan;
         void Start()
         {
             rb = GetComponent<Rigidbody>();
             targetHeight = transform.position.y;
             sceneCenter = new Vector3(32, targetHeight, 32);
-            spotlightcontrol = GetComponentInChildren<DevSpotLightControl>();
-            spotlightTargetRot = spotlightcontrol.transform.rotation;
+            spotlightcontrol = GetComponentsInChildren<DevSpotLightControl>();
+            spotlightTargetRot = new Quaternion[spotlightcontrol.Length];
+            for (int i = 0; i < spotlightcontrol.Length; i++)
+            {
+                spotlightTargetRot[i] = spotlightcontrol[i].transform.rotation;
+            }
         }
 
         private void Update()
@@ -69,7 +75,7 @@
             sceneCenter.y = transform.position.y;
             Vector3 targetDirection = sceneCenter - transform.position;
             targetDirection.y = 0;
-            
+
             if (lastMoveTime + currentMoveTimeInterval < Time.time || targetDirection.magnitude > 35)
             {
                 lastMoveTime = Time.time;
@@ -96,15 +102,31 @@
             }
             if (rb.velocity.magnitude >= 0.0001f)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rb.velocity), (1 - (lightMoveSpan / currentMoveTimeInterval)) * 2);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rb.velocity), (1 - (lightMoveSpan / currentMoveTimeInterval)) * 1.5f);
             }
-            spotlightcontrol.transform.localRotation = Quaternion.Lerp(spotlightcontrol.transform.localRotation, spotlightTargetRot, 1 - (lightMoveSpan/currentMoveTimeInterval));
+            for (int i = 0; i < spotlightcontrol.Length; i++)
+            {
+                spotlightcontrol[i].transform.localRotation = Quaternion.Lerp(spotlightcontrol[i].transform.localRotation, spotlightTargetRot[i], 1 - (lightMoveSpan / currentMoveTimeInterval));
+            }
             lightMoveSpan -= Time.deltaTime;
+            /*
+            Quaternion alienOrigRot = aliens[0].rotation;
+            Vector3 localEuler = aliens[0].rotation.eulerAngles;
+            alienOrigRot.SetLookRotation(rb.velocity.normalized);
+            float originalY = alienOrigRot.eulerAngles.y;
+
+            localEuler.x = 30 * Mathf.Clamp(rb.velocity.magnitude, 0, 5) / 5f;
+            localEuler.y = originalY;
+            aliens[0].rotation = alienOrigRot;
+            */
         }
 
         void MoveSpotLight()
         {
-            spotlightTargetRot.eulerAngles = new Vector3(Random.Range(-45f, 0), 0, 0);
+            for (int i = 0; i < spotlightTargetRot.Length; i++)
+            {
+                spotlightTargetRot[i].eulerAngles = new Vector3(Random.Range(-45f, 0), 0, Random.Range(-30f, 30f));
+            }
         }
 
         private void OnTriggerEnter(Collider other)
