@@ -10,6 +10,7 @@
         [SerializeField] private GameObject fencePrefab;
         [SerializeField] private GameObject exit;
         [SerializeField] private GameObject aliensPrefab;
+        [SerializeField] private GameObject guardPostPrefab;
 
         private const int unitsOutsideFence = 3;
 
@@ -53,6 +54,11 @@
 
             // Place aliens at corners:
             Instantiate(aliensPrefab, new Vector3(3, 100, size.z - 4), Quaternion.Euler(0, 135, 0));
+
+            // Place guard posts:
+            Instantiate(guardPostPrefab, new Vector3(0, 88.5f, size.z), Quaternion.Euler(0, 135, 0));
+            Instantiate(guardPostPrefab, new Vector3(size.x - 3, 86.5f, size.z), Quaternion.Euler(0, -135, 0));
+            Instantiate(guardPostPrefab, new Vector3(size.x - 3, 86.5f, 0), Quaternion.Euler(0, -45, 0));
         }
     }
 }
