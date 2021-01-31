@@ -54,6 +54,7 @@
 
             // Place aliens at corners:
             Instantiate(aliensPrefab, new Vector3(3, 100, size.z - 4), Quaternion.Euler(0, 135, 0));
+            Instantiate(aliensPrefab, new Vector3(size.x - 3 - unitsOutsideFence, 100, size.z - 4), Quaternion.Euler(0, 135, 0));
 
             // Place guard posts:
             Instantiate(guardPostPrefab, new Vector3(0, 88.5f, size.z), Quaternion.Euler(0, 135, 0));
