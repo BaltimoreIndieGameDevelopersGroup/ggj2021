@@ -470,11 +470,11 @@ MonoBehaviour:
     fmodEventEmitter: {fileID: 2310133435973529677}
   - item: {fileID: 11400000, guid: 0b8bf428357bd9846a0ab0815628a4c3, type: 2}
     penetratesRock: 0
-    digDuration: 0.5
+    digDuration: 0.35
     fmodEventEmitter: {fileID: 4304927037040756134}
   - item: {fileID: 0}
     penetratesRock: 0
-    digDuration: 1
+    digDuration: 0.5
     fmodEventEmitter: {fileID: 4304927037040756134}
   dynamite: {fileID: 11400000, guid: f1cf32dbc174951448923299d6169858, type: 2}
   litDynamite: {fileID: 5770308293025577733, guid: 0daedd7e22133c448b7ee3ac90b612fe,
