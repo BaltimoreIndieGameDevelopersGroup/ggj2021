@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicLevel: 3
+  textMesh: {fileID: 7816132025298230763}
 --- !u!1 &1870888355064420021
 GameObject:
   m_ObjectHideFlags: 0

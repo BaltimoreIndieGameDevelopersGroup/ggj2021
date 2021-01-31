@@ -112,7 +112,9 @@
             }
             lightMoveSpan -= Time.deltaTime;
 
-            Vector3 alienEuler = Quaternion.LookRotation(rb.velocity.normalized).eulerAngles;
+            Vector3 alienEuler = (rb.velocity.normalized != Vector3.zero)
+                ? Quaternion.LookRotation(rb.velocity.normalized).eulerAngles
+                : Vector3.one;
             float angleDiff = transform.rotation.eulerAngles.y - alienEuler.y;
             alienEuler.x = Mathf.Lerp(alienEuler.x, 30 * Mathf.Clamp(rb.velocity.magnitude, 0, 5) / 5f, Time.deltaTime * 5);
 

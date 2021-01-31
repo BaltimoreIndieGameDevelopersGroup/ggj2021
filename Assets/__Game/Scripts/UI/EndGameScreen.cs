@@ -8,15 +8,27 @@
     public class EndGameScreen : MonoBehaviour
     {
         [SerializeField] private int musicLevel;
+        [SerializeField] private TextMeshProUGUI textMesh;
 
         private float timeLeftToAllowContinue = 2;
 
-        private IEnumerator Start()
+        private const float ScrollDuration = 4;
+
+        protected virtual void Start()
         {
             ServiceLocator.Get<IAudioManager>().PlayMusicLevel(musicLevel);
             GetComponent<Canvas>().enabled = true;
-            var textMesh = GetComponentInChildren<TextMeshProUGUI>();
-            const float ScrollDuration = 4f;
+            StartTextScroll();
+        }
+
+        protected virtual void StartTextScroll()
+        {
+            StartCoroutine(ScrollText(textMesh.text));
+        }
+
+        protected IEnumerator ScrollText(string text)
+        {
+            textMesh.text = text;
 
             // Scroll text:
             float elapsed = 0;
@@ -36,9 +48,14 @@
             {
                 if (Input.anyKeyDown || Input.GetButtonDown("Fire1"))
                 {
-                    SceneManager.LoadScene(0);
+                    DoneScrolling();
                 }
             }
+        }
+
+        protected virtual void DoneScrolling()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿namespace Game
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
     [CreateAssetMenu]
@@ -9,6 +7,10 @@
     {
         [TextArea] [SerializeField] private string introText;
 
+        [TextArea] [SerializeField] private string[] victoryText;
+
         public string IntroText { get { return introText; } }
+        public string[] VictoryText { get { return victoryText; } }
     }
 }
+
