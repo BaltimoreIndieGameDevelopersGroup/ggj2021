@@ -67,10 +67,8 @@ public class TerrainToolSet : MonoBehaviour
         placeObject();
     }
     public void placeObject()
-
     {
-
-
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0) return; // Don't build in title scene.
 
         gameBuildings.ForEach(building =>
         {

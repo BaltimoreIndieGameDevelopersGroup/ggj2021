@@ -82,11 +82,14 @@
                 textMesh.enabled = true;
                 textMesh.text = banter.Lines[i];
                 var timing = (i < banter.Timing.Length && banter.Timing[i] > 1) ? banter.Timing[i] : 2;
+                timing = Mathf.Clamp(timing, 1, 18);
                 yield return new WaitForSeconds(timing);
                 textMesh.enabled = false;
             }
             banterCoroutine = null;
             currentBanterSoundEmitter = null;
+            alien1TextMesh.enabled = false;
+            alien2TextMesh.enabled = false;
         }
 
         public void StopBanter()

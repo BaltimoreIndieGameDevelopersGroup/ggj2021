@@ -16,6 +16,7 @@
 
         protected virtual void Start()
         {
+            ServiceLocator.Get<IMessageUI>().StopBanter();
             ServiceLocator.Get<IAudioManager>().PlayMusicLevel(musicLevel);
             GetComponent<Canvas>().enabled = true;
             StartTextScroll();
