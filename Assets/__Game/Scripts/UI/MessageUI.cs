@@ -62,8 +62,10 @@
 
         public void PlayBanter(Banter banter)
         {
-            StopBanter();
-            banterCoroutine = StartCoroutine(BanterCoroutine(banter));
+            if (banterCoroutine == null)
+            {
+                banterCoroutine = StartCoroutine(BanterCoroutine(banter));
+            }
         }
 
         private IEnumerator BanterCoroutine(Banter banter)
@@ -79,7 +81,7 @@
                 var textMesh = (i % 2 == 0) ? alien1TextMesh : alien2TextMesh;
                 textMesh.enabled = true;
                 textMesh.text = banter.Lines[i];
-                var timing = (i < banter.Timing.Length && banter.Timing[i] > 0) ? banter.Timing[i] : 2;
+                var timing = (i < banter.Timing.Length && banter.Timing[i] > 1) ? banter.Timing[i] : 2;
                 yield return new WaitForSeconds(timing);
                 textMesh.enabled = false;
             }
@@ -98,6 +100,8 @@
                     currentBanterSoundEmitter = null;
                 }
                 banterCoroutine = null;
+                alien1TextMesh.enabled = false;
+                alien2TextMesh.enabled = false;
             }
         }
     }

@@ -52,8 +52,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &2655934748926524185
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,8 +106,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &2764482369450395860
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +160,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &3054426063749327967
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,8 +214,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &3460241252353119107
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +268,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &4266006371704085392
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,8 +598,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &5053894223061396058
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,8 +652,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &6662216237356252593
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,8 +706,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &6883053486353880493
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,8 +760,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &7766161152325140862
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,8 +814,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &8039538107193360701
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,8 +868,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &8065418485026848231
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,8 +922,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &8604316186573707379
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,8 +976,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &8806124659522796107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,8 +1030,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1 &9067866176196670006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,8 +1084,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 20
-  OverrideMaxDistance: 30
+  OverrideMinDistance: 60
+  OverrideMaxDistance: 100
 --- !u!1001 &2091018782649984274
 PrefabInstance:
   m_ObjectHideFlags: 0
