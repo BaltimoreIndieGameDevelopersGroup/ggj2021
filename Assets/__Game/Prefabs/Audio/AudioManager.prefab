@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicEmitter: {fileID: 975791351361596307}
-  debug: 1
+  debug: 0
 --- !u!1 &975791351361596305
 GameObject:
   m_ObjectHideFlags: 0
