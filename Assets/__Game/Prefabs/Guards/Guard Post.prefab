@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daebd90dd1de61c41a605b752e698720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 2
+  pitch: 80
   spotLightControl: {fileID: 6746385398570839306}
 --- !u!1 &2310132465651657796
 GameObject:

@@ -43,11 +43,12 @@
             rb = GetComponent<Rigidbody>();
             targetHeight = transform.position.y;
             sceneCenter = new Vector3(32, targetHeight, 32);
-            spotlightcontrol = GetComponentsInChildren<DevSpotLightControl>();
-            spotlightTargetRot = new Quaternion[spotlightcontrol.Length];
-            for (int i = 0; i < spotlightcontrol.Length; i++)
+            spotlightcontrol = new DevSpotLightControl[aliens.Length];
+            spotlightTargetRot = new Quaternion[aliens.Length];
+            for (int i = 0; i < aliens.Length; i++)
             {
-                spotlightTargetRot[i] = spotlightcontrol[i].transform.rotation;
+                spotlightcontrol[i] = aliens[i].GetComponentInChildren<DevSpotLightControl>();
+                spotlightTargetRot[i] = aliens[i].rotation;
             }
         }
 
@@ -100,25 +101,26 @@
 
                 MoveSpotLight();
             }
+            float timeInc = 1 - (lightMoveSpan / currentMoveTimeInterval);
             if (rb.velocity.magnitude >= 0.0001f)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rb.velocity), (1 - (lightMoveSpan / currentMoveTimeInterval)) * 1.5f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rb.velocity), Time.deltaTime);
             }
             for (int i = 0; i < spotlightcontrol.Length; i++)
             {
-                spotlightcontrol[i].transform.localRotation = Quaternion.Lerp(spotlightcontrol[i].transform.localRotation, spotlightTargetRot[i], 1 - (lightMoveSpan / currentMoveTimeInterval));
+                spotlightcontrol[i].transform.localRotation = Quaternion.Lerp(spotlightcontrol[i].transform.localRotation, spotlightTargetRot[i], Time.deltaTime * 5);
             }
             lightMoveSpan -= Time.deltaTime;
-            /*
-            Quaternion alienOrigRot = aliens[0].rotation;
-            Vector3 localEuler = aliens[0].rotation.eulerAngles;
-            alienOrigRot.SetLookRotation(rb.velocity.normalized);
-            float originalY = alienOrigRot.eulerAngles.y;
 
-            localEuler.x = 30 * Mathf.Clamp(rb.velocity.magnitude, 0, 5) / 5f;
-            localEuler.y = originalY;
-            aliens[0].rotation = alienOrigRot;
-            */
+            Vector3 alienEuler = Quaternion.LookRotation(rb.velocity.normalized).eulerAngles;
+            float angleDiff = transform.rotation.eulerAngles.y - alienEuler.y;
+            alienEuler.x = Mathf.Lerp(alienEuler.x, 30 * Mathf.Clamp(rb.velocity.magnitude, 0, 5) / 5f, Time.deltaTime * 5);
+
+            for (int i = 0; i < aliens.Length; i++)
+            {
+                aliens[i].rotation = Quaternion.Euler(alienEuler);
+                aliens[i].RotateAround(aliens[i].position, aliens[i].up, angleDiff);
+            }
         }
 
         void MoveSpotLight()
