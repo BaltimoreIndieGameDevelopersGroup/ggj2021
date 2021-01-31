@@ -17,5 +17,7 @@
         void Die();
 
         bool AllowMovement { get; set; }
+
+        bool AllowDetection { get; set; }
     }
 }

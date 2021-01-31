@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, Game.IPlayerController
     [SerializeField] private FMODUnity.StudioEventEmitter footstepsEmitter;
     private float timeSinceLastFootstep = 0;
     private const float WalkingFootstepFrequency = 0.25f;
+    private bool allowDetection = true;
 
     [Space]
 
@@ -237,7 +238,10 @@ public class PlayerController : MonoBehaviour, Game.IPlayerController
 
     public void DetectedByGuard()
     {
-        Lose();
+        if (allowDetection)
+        {
+            Lose();
+        }
     }
 
     public void Die()
@@ -258,6 +262,12 @@ public class PlayerController : MonoBehaviour, Game.IPlayerController
     {
         get { return enabled; }
         set { enabled = value; }
+    }
+
+    public bool AllowDetection
+    {
+        get { return allowDetection; }
+        set { allowDetection = value; }
     }
 
 }

@@ -60,6 +60,7 @@
             if (currentMusicIntensity < 1)
             {
                 currentMusicIntensity = 1;
+                musicEmitter.SetParameter("Level Navigation", 1);
                 musicEmitter.SetParameter("Intensity Level", 1);
                 if (debug) Debug.Log($"MUSIC Intensity Level=1");
             }
@@ -70,6 +71,7 @@
             if (currentMusicIntensity > 0)
             {
                 currentMusicIntensity = 0;
+                musicEmitter.SetParameter("Level Navigation", 1);
                 musicEmitter.SetParameter("Intensity Level", 0);
                 if (debug) Debug.Log($"MUSIC Intensity Level=0");
             }

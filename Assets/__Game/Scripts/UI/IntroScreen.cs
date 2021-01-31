@@ -10,8 +10,12 @@
     {
         [SerializeField] private GameText gameText;
 
+        private const float DetectionGracePeriod = 3;
+
         private IEnumerator Start()
         {
+            ServiceLocator.Get<IPlayerController>().AllowDetection = false;
+
             GetComponent<Canvas>().enabled = true;
             var textMesh = GetComponentInChildren<TextMeshProUGUI>();
             var image = GetComponentInChildren<Image>();
@@ -58,6 +62,12 @@
                 yield return null;
                 elapsed += Time.deltaTime;
             }
+
+            GetComponent<Canvas>().enabled = true;
+
+            yield return new WaitForSeconds(DetectionGracePeriod);
+
+            ServiceLocator.Get<IPlayerController>().AllowDetection = true;
 
             Destroy(gameObject);
         }
