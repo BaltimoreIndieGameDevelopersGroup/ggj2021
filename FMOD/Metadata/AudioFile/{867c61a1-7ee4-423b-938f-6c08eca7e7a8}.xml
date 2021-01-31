@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{867c61a1-7ee4-423b-938f-6c08eca7e7a8}">
+		<property name="assetPath">
+			<value>Conversation 4.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>8.9862811791383219</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3eed5a23-689e-4404-9a41-a0c31e5a84f9}</destination>
+		</relationship>
+	</object>
+</objects>
