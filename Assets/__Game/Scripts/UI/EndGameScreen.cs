@@ -9,6 +9,8 @@
     {
         [SerializeField] private int musicLevel;
 
+        private float timeLeftToAllowContinue = 2;
+
         private IEnumerator Start()
         {
             ServiceLocator.Get<IAudioManager>().PlayMusicLevel(musicLevel);
@@ -29,9 +31,13 @@
 
         protected virtual void Update()
         {
-            if (Input.anyKeyDown || Input.GetButtonDown("Fire1"))
+            timeLeftToAllowContinue -= Time.deltaTime;
+            if (timeLeftToAllowContinue <= 0)
             {
-                SceneManager.LoadScene(0);
+                if (Input.anyKeyDown || Input.GetButtonDown("Fire1"))
+                {
+                    SceneManager.LoadScene(0);
+                }
             }
         }
     }
