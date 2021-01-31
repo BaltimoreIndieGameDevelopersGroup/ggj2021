@@ -32,6 +32,7 @@
 
         private void Start()
         {
+            musicEmitter.Play();
             SetMusicForCurrentScene();
         }
 

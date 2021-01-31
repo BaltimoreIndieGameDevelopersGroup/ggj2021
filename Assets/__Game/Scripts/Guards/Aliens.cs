@@ -21,6 +21,8 @@
     {
         [SerializeField] private Banter[] banter;
 
+        public Banter[] Banter { get { return banter; } }
+
         Rigidbody rb;
 
         [SerializeField] private Transform[] aliens;
@@ -138,7 +140,7 @@
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") && ServiceLocator.Get<IPlayerController>().AllowMovement)
             {
                 ServiceLocator.Get<IMessageUI>().PlayBanter(banter[UnityEngine.Random.Range(0, banter.Length)]);
             }

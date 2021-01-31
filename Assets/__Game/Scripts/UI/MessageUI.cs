@@ -14,7 +14,6 @@
         private const float MessageDuration = 5;
 
         private Coroutine banterCoroutine = null;
-        private FMODUnity.StudioEventEmitter currentBanterSoundEmitter = null;
 
         private void OnEnable()
         {
@@ -73,7 +72,6 @@
             if (banter.SoundEmitter != null)
             {
                 banter.SoundEmitter.Play();
-                currentBanterSoundEmitter = banter.SoundEmitter;
             }
 
             for (int i = 0; i < banter.Lines.Length; i++)
@@ -87,7 +85,6 @@
                 textMesh.enabled = false;
             }
             banterCoroutine = null;
-            currentBanterSoundEmitter = null;
             alien1TextMesh.enabled = false;
             alien2TextMesh.enabled = false;
         }
@@ -97,14 +94,16 @@
             if (banterCoroutine != null)
             {
                 StopCoroutine(banterCoroutine);
-                if (currentBanterSoundEmitter != null)
-                {
-                    currentBanterSoundEmitter.Stop();
-                    currentBanterSoundEmitter = null;
-                }
                 banterCoroutine = null;
-                alien1TextMesh.enabled = false;
-                alien2TextMesh.enabled = false;
+            }
+            alien1TextMesh.enabled = false;
+            alien2TextMesh.enabled = false;
+            foreach (var aliens in FindObjectsOfType<Aliens>())
+            {
+                foreach (var banter in aliens.Banter)
+                {
+                    if (banter.SoundEmitter != null) banter.SoundEmitter.Stop();
+                }
             }
         }
     }
